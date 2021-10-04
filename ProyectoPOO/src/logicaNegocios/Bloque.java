@@ -37,6 +37,18 @@ public class Bloque {
   public void setCursos(ArrayList<Curso> cursos) {
     this.cursos = cursos;
   }
+
+  @Override
+  public String toString() {
+    return "Bloque{" + "numBloque=" + numBloque + ", cursos=" + cursos + '}';
+  }
+  
+  
+  
+  public void agregarCursoBloque(Curso curso){
+    cursos.add(curso);
+    System.err.println("curso añadido al bloque: "+getNumBloque());
+  }
   
   
   

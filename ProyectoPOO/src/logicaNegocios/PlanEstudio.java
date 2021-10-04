@@ -47,6 +47,27 @@ public class PlanEstudio {
   public void setBloques(ArrayList<Bloque> bloques) {
     this.bloques = bloques;
   }
+
+  @Override
+  public String toString() {
+    return "PlanEstudio{" + "numPlan=" + numPlan + ", \nvigencia=" + vigencia + ", \nbloques=" + bloques + '}';
+  }
+  
+  
+  
+  public void registrarCursoPlan(String nombre, String codigo, int creditos, int horasLectivas, int numBloque){
+        Curso curso = new Curso(nombre, codigo, creditos, horasLectivas);
+        //se crea el número de bloque aunque se debería ver si existe primero,cierto...por hacer
+        //VALIDAR LISTA BLOQUES
+        Bloque bloque = new Bloque(numBloque);
+        bloque.agregarCursoBloque(curso);
+        //Se añade el bloque a la lista de bloques...igual validar si existe el bloque ya en la lista.. me lleva
+        bloques.add(bloque);
+        System.err.println("Curso registrado al plan: "+getNumPlan());
+        
+        
+  }
+    
   
   
     

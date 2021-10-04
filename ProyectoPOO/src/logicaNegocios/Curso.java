@@ -77,6 +77,13 @@ public class Curso {
   public void setCorrequisitos(ArrayList<Curso> correquisitos) {
     this.correquisitos = correquisitos;
   }
+
+  @Override
+  public String toString() {
+    return "Curso{" + "nombre=" + nombre + ", codigo=" + codigo + ", creditos=" + creditos + ", horasLectivas=" + horasLectivas + ", requisitos=" + requisitos + ", correquisitos=" + correquisitos + '}';
+  }
+  
+  
   
   
   
