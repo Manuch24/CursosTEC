@@ -23,6 +23,9 @@ public class Escuela {
     this.planes = new ArrayList <PlanEstudio>();         
     }
 
+  public Escuela() {
+  }
+
   public String getCodigo() {
     return codigo;
   }
