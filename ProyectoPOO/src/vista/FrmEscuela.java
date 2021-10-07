@@ -35,6 +35,7 @@ public class FrmEscuela extends javax.swing.JFrame {
     txtNombre = new javax.swing.JTextField();
     txtCodigo = new javax.swing.JTextField();
     btnMenu = new javax.swing.JButton();
+    btnLimpiar = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,8 @@ public class FrmEscuela extends javax.swing.JFrame {
 
     btnMenu.setText("Menú");
 
+    btnLimpiar.setText("Limpiar campos");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -86,16 +89,20 @@ public class FrmEscuela extends javax.swing.JFrame {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
           .addGroup(layout.createSequentialGroup()
-            .addGap(43, 43, 43)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addGroup(layout.createSequentialGroup()
-            .addGap(84, 84, 84)
-            .addComponent(btnRegistrar)
-            .addGap(70, 70, 70)
-            .addComponent(btnBuscar)))
-        .addContainerGap(57, Short.MAX_VALUE))
+            .addGap(33, 33, 33)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+              .addComponent(btnRegistrar)
+              .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnBuscar)
+                .addGap(28, 28, 28)
+                .addComponent(btnLimpiar)))))
+        .addContainerGap(41, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +120,8 @@ public class FrmEscuela extends javax.swing.JFrame {
         .addGap(18, 18, 18)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(btnRegistrar)
-          .addComponent(btnBuscar))
+          .addComponent(btnBuscar)
+          .addComponent(btnLimpiar))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
         .addComponent(btnMenu)
         .addGap(16, 16, 16))
@@ -171,6 +179,7 @@ public class FrmEscuela extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnBuscar;
+  public javax.swing.JButton btnLimpiar;
   public javax.swing.JButton btnMenu;
   public javax.swing.JButton btnRegistrar;
   private javax.swing.JLabel jLabel1;

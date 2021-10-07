@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -22,12 +23,13 @@ public class ConsultasEscuela extends Conexion {
   PreparedStatement ps = null;
   Connection con = getConexion();
   
-  String sql = "INSERT INTO Escuelas (codigo, nombre) VALUES (?,?)";
+  String sql = "INSERT INTO Escuela (codigoEscuela, nombre) VALUES (?,?)";
   
   try{
     ps = con.prepareStatement(sql);
     ps.setString(1, pEscuela.getCodigo());
     ps.setString(2, pEscuela.getNombre());
+    ps.execute();
     return true;
     
   }catch(SQLException e){
@@ -47,7 +49,7 @@ public class ConsultasEscuela extends Conexion {
     ResultSet rs = null;
    Connection con = getConexion();
   
-   String sql = "Select nombre FROM Escuelas WHERE codigo=? ";
+   String sql = "SELECT * FROM Escuela WHERE codigoEscuela=?";
   
    try{
      ps = con.prepareStatement(sql);
@@ -56,10 +58,44 @@ public class ConsultasEscuela extends Conexion {
      
      if(rs.next()){
        
-       pEscuela.setCodigo(rs.getString("codigo"));
+       pEscuela.setCodigo(rs.getString("codigoEscuela"));
        pEscuela.setNombre(rs.getString("nombre"));
+
+       return true;
      }
-     return true;
+     return false;
+   }catch(SQLException e){
+     System.err.println(e);
+     return false;
+   }finally{
+     try{
+       con.close();
+     }catch (SQLException e){
+       System.err.println(e);
+     }
+   } 
+  }
+  
+   public boolean listarEscuelas(Escuela pEscuela, JComboBox comBox){
+   PreparedStatement ps = null;
+    ResultSet rs = null;
+   Connection con = getConexion();
+  
+   String sql = "SELECT * FROM Escuela WHERE codigoEscuela=?";
+  
+   try{
+     ps = con.prepareStatement(sql);
+     ps.setString(1, pEscuela.getCodigo());
+     rs = ps.executeQuery();
+     
+     if(rs.next()){
+       
+       pEscuela.setCodigo(rs.getString("codigoEscuela"));
+       pEscuela.setNombre(rs.getString("nombre"));
+
+       return true;
+     }
+     return false;
    }catch(SQLException e){
      System.err.println(e);
      return false;

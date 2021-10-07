@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class Conexion {
   
   public static Connection getConexion(){
-    String conexionUrl = "jdbc:sqlserver://localhost:1433;databaseName=Proyecto1";
+    String conexionUrl = "jdbc:sqlserver://localhost:1433;databaseName=Progra1POO";
        try{  
          Connection con =  DriverManager.getConnection(conexionUrl,"sa","12345");
             return con;

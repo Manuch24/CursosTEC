@@ -54,21 +54,46 @@ public class PlanEstudio {
   }
   
   
-  
+  /***
+   * 
+   * @param nombre
+   * @param codigo
+   * @param creditos
+   * @param horasLectivas
+   * @param numBloque 
+   * 
+   * @see validarBloque
+   */
   public void registrarCursoPlan(String nombre, String codigo, int creditos, int horasLectivas, int numBloque){
-        Curso curso = new Curso(nombre, codigo, creditos, horasLectivas);
-        //se crea el número de bloque aunque se debería ver si existe primero,cierto...por hacer
-        //VALIDAR LISTA BLOQUES
-        Bloque bloque = new Bloque(numBloque);
-        bloque.agregarCursoBloque(curso);
-        //Se añade el bloque a la lista de bloques...igual validar si existe el bloque ya en la lista.. me lleva
-        bloques.add(bloque);
-        System.err.println("Curso registrado al plan: "+getNumPlan());
-        
-        
+    Curso curso = new Curso(nombre, codigo, creditos, horasLectivas);
+    if (validarBloque(numBloque) == false){
+     Bloque bloque = new Bloque(numBloque);
+     bloque.agregarCursoBloque(curso); 
+     bloques.add(bloque);
+     System.err.println("Blque y curso registrado al plan: "+getNumPlan() +"\n"+ "Al bloque: "+ bloque.getNumBloque());
+    }
+    else{
+      for(Bloque bloque: bloques){
+        if(bloque.getNumBloque() == numBloque){
+          bloque.agregarCursoBloque(curso);
+          System.err.println("Curso registrado al plan: "+getNumPlan() +"\n"+ "Al bloque: "+ bloque.getNumBloque());
+        }
+      }
+    }
   }
-    
   
-  
-    
+  /***
+   * 
+   * @param numBloque
+   * @return true si existe un semestre con ese numero, false si no existe
+   */
+  public boolean validarBloque(int numBloque){
+    for (Bloque bloque: bloques){
+      if (bloque.getNumBloque() == numBloque){
+        return true;
+      }
+      }
+      return false;
+ 
+}
 }

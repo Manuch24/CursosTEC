@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import logicaNegocios.ConsultasEscuela;
 import logicaNegocios.Escuela;
 import vista.FrmEscuela;
+import vista.FrmMenu;
 
 /**
  *
@@ -16,6 +17,7 @@ public class CtrlEscuela implements ActionListener {
   private Escuela mod;
   private ConsultasEscuela modC;
   private FrmEscuela frm;
+  private CtrlMenu modMenuC;
 
   public CtrlEscuela(Escuela mod, ConsultasEscuela modC, FrmEscuela frm) {
     this.mod = mod;
@@ -24,6 +26,7 @@ public class CtrlEscuela implements ActionListener {
     this.frm.btnBuscar.addActionListener(this);
     this.frm.btnMenu.addActionListener(this);
     this.frm.btnRegistrar.addActionListener(this);
+    this.modMenuC = new CtrlMenu();
   }
   
   public void iniciar(){
@@ -49,23 +52,41 @@ public class CtrlEscuela implements ActionListener {
      if (e.getSource() == frm.btnBuscar){
       mod.setCodigo(frm.txtCodigo.getText());
 
-      
-      if(modC.registar(mod)){
+      if(modC.buscar(mod)){
+        frm.txtCodigo.setText(mod.getCodigo());
         frm.txtNombre.setText(mod.getNombre());
-        limpiar();
+//        limpiar();
     }else{
         JOptionPane.showMessageDialog(null, "ERROR al buscar escuela  ");
         limpiar();
       }
       
     }
+     
+     if(e.getSource() == frm.btnLimpiar){
+       frm.txtCodigo.setText("");
+       frm.txtNombre.setText("");
+     }
+     
+     if(e.getSource() == frm.btnMenu){
+       frm.setVisible(false);
+       modMenuC.iniciar();
+       
+     }
   }
+  
+  
+  
+  
+  
   
   public void limpiar(){
     frm.txtCodigo.setText(null);
     frm.txtNombre.setText(null);
 
   }
+  
+  
   
   
 }

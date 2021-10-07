@@ -26,12 +26,13 @@ public class app {
     ctrl.iniciar();
     frm.setVisible(true);
     
-//  LocalDate fecha = LocalDate.of(2026, 12, 31);
-//  PlanEstudio plan1 = new PlanEstudio(2050, fecha );
-//  
-//  plan1.registrarCursoPlan("SIE", "TI8989", 3, 9, 1);
-//  
-//  System.out.println(plan1.toString());
+  LocalDate fecha = LocalDate.of(2026, 12, 31);
+  PlanEstudio plan1 = new PlanEstudio(2050, fecha );
+  
+  plan1.registrarCursoPlan("SIE", "TI8989", 3, 9, 1);
+  plan1.registrarCursoPlan("Conta 1", "TI1012", 3, 9, 1);
+  
+  System.out.println(plan1.toString());
 
 
   

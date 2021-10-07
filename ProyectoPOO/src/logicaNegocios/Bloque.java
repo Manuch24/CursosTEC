@@ -40,7 +40,7 @@ public class Bloque {
 
   @Override
   public String toString() {
-    return "Bloque{" + "numBloque=" + numBloque + ", cursos=" + cursos + '}';
+    return "Bloque: [" + "numBloque=" + numBloque + "cursos= " + cursos + "]";
   }
   
   
