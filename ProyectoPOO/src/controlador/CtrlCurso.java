@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -43,6 +38,7 @@ public class CtrlCurso implements ActionListener{
     this.frm.txtCodigo.addActionListener(this);
     this.frm.btnRegistar.addActionListener(this);
     this.frm.btnLimpiar.addActionListener(this); 
+    this.frm.cbxEscuela.addActionListener(this);
     llenadoCbxEscuelas();
     setLetrasCodigo();
   }
@@ -63,9 +59,22 @@ public class CtrlCurso implements ActionListener{
   public void llenadoCbxEscuelas(){
     consultasEscuela.listarEscuelas(this.frm.cbxEscuela);
   }
+  
+  private void limpiar() {
+    frm.txtCodigo.setText(null);
+    frm.txtNombre.setText(null);
+    frm.cbxCreditos.getSelectedIndex();
+    frm.cbxEscuela.getSelectedIndex();
+    frm.cbxHorasLectivas.getSelectedIndex();
+
+  }
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    //LimpiarCampos
+    if(e.getSource()==frm.btnLimpiar){
+      limpiar();
+    }
     //Registar curso
     if(e.getSource() == frm.cbxEscuela){
       setLetrasCodigo();
@@ -76,11 +85,10 @@ public class CtrlCurso implements ActionListener{
       mod.setNombre(frm.txtNombre.getText());
       mod.setCreditos( Integer.parseInt(frm.cbxCreditos.getSelectedItem().toString()));
       mod.setCreditos( Integer.parseInt(frm.cbxHorasLectivas.getSelectedItem().toString()));
-     
       if(modC.registar(mod)){
-        JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
+        JOptionPane.showMessageDialog(null, "Registro del  curso " +mod.getNombre()+ " guardado");
       }else{
-        JOptionPane.showMessageDialog(null, "ERROR al guardar  ");
+        JOptionPane.showMessageDialog(null, "Error al guardar curso  ");
       } 
     }   
     
@@ -91,12 +99,5 @@ public class CtrlCurso implements ActionListener{
       CtrlMenu ctrlMenu = new CtrlMenu();
       ctrlMenu.iniciar();
     }
-  }
-  
-
-  
-  
-        
-  
-  
+  }  
 }
