@@ -3,19 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/Conexion.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/app/app.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/Escuela.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlMenu.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/PlanEstudio.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/Bloque.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmMenu.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlCurso.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlEscuela.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/Curso.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlMenu.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/ConsultasEscuela.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/PlanEstudio.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmCursos.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmEscuela.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/ConsultasCurso.java</file>
         </group>
     </open-files>
 </project-private>

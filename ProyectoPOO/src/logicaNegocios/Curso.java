@@ -30,9 +30,7 @@ public class Curso {
     this.correquisitos = new ArrayList<Curso>();
   }
 
-  public Curso() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+  public Curso() {}
 
   public String getNombre() {
     return nombre;
@@ -87,9 +85,12 @@ public class Curso {
     return "Curso[ " + "nombre= " + nombre + "codigo=" + codigo + ", creditos=" + creditos + ", horasLectivas=" + horasLectivas + ", requisitos=" + requisitos + ", correquisitos=" + correquisitos + '}';
   }
   
+  public void agregarRequisito (Curso curso){
+    requisitos.add(curso);
+  }
   
-  
-  
-  
+  public void agregarCorrequisito (Curso curso){
+    correquisitos.add(curso);
+  }
   
 }

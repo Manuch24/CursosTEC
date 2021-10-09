@@ -41,6 +41,7 @@
                               <Component id="btnRgistrarPlanes" min="-2" max="-2" attributes="0"/>
                               <Component id="btnRegistrarCurso" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnEscuela" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -61,7 +62,9 @@
               <Component id="btnRgistrarPlanes" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnConsultarPlanes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="86" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnEscuela" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,6 +109,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarPlanesActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEscuela">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar Escuela"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>

@@ -24,10 +24,51 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="btnRegistar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnVolver" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="117" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="comBoxEscuela" min="-2" pref="161" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel2" min="-2" pref="108" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtNombre" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="117" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEscuela" min="-2" pref="161" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cbxHorasLectivas" min="-2" pref="65" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel5" min="-2" pref="56" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cbxCreditos" min="-2" pref="65" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtCodigo" min="-2" pref="75" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" pref="41" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
               <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -37,23 +78,59 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="comBoxEscuela" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxEscuela" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="247" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNombre" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxCreditos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxHorasLectivas" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnVolver" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnRegistar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="comBoxEscuela">
+    <Component class="javax.swing.JComboBox" name="cbxEscuela">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comBoxEscuelaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxEscuelaActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -64,6 +141,107 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Escuela propietaria"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnVolver">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Volver"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre del curso"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNombre">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo del curso"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCodigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&quot;&quot;"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cr&#xe9;ditos"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Horas Lectivas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbxCreditos">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="0"/>
+            <StringItem index="1" value="1"/>
+            <StringItem index="2" value="2"/>
+            <StringItem index="3" value="3"/>
+            <StringItem index="4" value="4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbxHorasLectivas">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="1"/>
+            <StringItem index="1" value="2"/>
+            <StringItem index="2" value="3"/>
+            <StringItem index="3" value="4"/>
+            <StringItem index="4" value="5"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodigo">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRegistar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLimpiar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpiar Campos"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

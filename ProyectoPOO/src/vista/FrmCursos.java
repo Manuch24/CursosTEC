@@ -27,28 +27,99 @@ public class FrmCursos extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    comBoxEscuela = new javax.swing.JComboBox<>();
+    cbxEscuela = new javax.swing.JComboBox<>();
     jLabel1 = new javax.swing.JLabel();
+    btnVolver = new javax.swing.JButton();
+    jLabel2 = new javax.swing.JLabel();
+    txtNombre = new javax.swing.JTextField();
+    jLabel3 = new javax.swing.JLabel();
+    jLabel4 = new javax.swing.JLabel();
+    lblCodigo = new javax.swing.JLabel();
+    jLabel5 = new javax.swing.JLabel();
+    jLabel6 = new javax.swing.JLabel();
+    cbxCreditos = new javax.swing.JComboBox<>();
+    cbxHorasLectivas = new javax.swing.JComboBox<>();
+    txtCodigo = new javax.swing.JTextField();
+    btnRegistar = new javax.swing.JButton();
+    btnLimpiar = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-    comBoxEscuela.addActionListener(new java.awt.event.ActionListener() {
+    cbxEscuela.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        comBoxEscuelaActionPerformed(evt);
+        cbxEscuelaActionPerformed(evt);
       }
     });
 
     jLabel1.setText("Escuela propietaria");
+
+    btnVolver.setText("Volver");
+
+    jLabel2.setText("Nombre del curso");
+
+    txtNombre.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNombreActionPerformed(evt);
+      }
+    });
+
+    jLabel3.setText("Código del curso");
+
+    lblCodigo.setText("\"\"");
+
+    jLabel5.setText("Créditos");
+
+    jLabel6.setText("Horas Lectivas");
+
+    cbxCreditos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
+
+    cbxHorasLectivas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+    btnRegistar.setText("Registrar");
+
+    btnLimpiar.setText("Limpiar Campos");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        .addGap(36, 36, 36)
+        .addComponent(btnRegistar)
+        .addGap(18, 18, 18)
+        .addComponent(btnLimpiar)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(btnVolver)
+        .addGap(33, 33, 33))
+      .addGroup(layout.createSequentialGroup()
         .addGap(47, 47, 47)
-        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(comBoxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(layout.createSequentialGroup()
+              .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addGap(18, 18, 18)
+              .addComponent(txtNombre))
+            .addGroup(layout.createSequentialGroup()
+              .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+              .addComponent(cbxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+              .addComponent(jLabel6)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(cbxHorasLectivas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+              .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(cbxCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+              .addComponent(jLabel3)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+              .addComponent(lblCodigo)
+              .addGap(18, 18, 18)
+              .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+              .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
         .addContainerGap(63, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
@@ -56,17 +127,49 @@ public class FrmCursos extends javax.swing.JFrame {
       .addGroup(layout.createSequentialGroup()
         .addGap(27, 27, 27)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(comBoxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(cbxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(jLabel1))
-        .addContainerGap(247, Short.MAX_VALUE))
+        .addGap(28, 28, 28)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(jLabel2)
+          .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(21, 21, 21)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel3)
+          .addComponent(jLabel4)
+          .addComponent(lblCodigo)
+          .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(17, 17, 17)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel5)
+          .addComponent(cbxCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel6)
+          .addComponent(cbxHorasLectivas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createSequentialGroup()
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnVolver)
+            .addGap(38, 38, 38))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(btnRegistar)
+              .addComponent(btnLimpiar))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
     );
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void comBoxEscuelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comBoxEscuelaActionPerformed
+  private void cbxEscuelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEscuelaActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_comBoxEscuelaActionPerformed
+  }//GEN-LAST:event_cbxEscuelaActionPerformed
+
+  private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtNombreActionPerformed
 
   /**
    * @param args the command line arguments
@@ -104,7 +207,20 @@ public class FrmCursos extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  public javax.swing.JComboBox<String> comBoxEscuela;
+  public javax.swing.JButton btnLimpiar;
+  public javax.swing.JButton btnRegistar;
+  public javax.swing.JButton btnVolver;
+  public javax.swing.JComboBox<String> cbxCreditos;
+  public javax.swing.JComboBox<String> cbxEscuela;
+  public javax.swing.JComboBox<String> cbxHorasLectivas;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
+  private javax.swing.JLabel jLabel3;
+  private javax.swing.JLabel jLabel4;
+  private javax.swing.JLabel jLabel5;
+  private javax.swing.JLabel jLabel6;
+  public javax.swing.JLabel lblCodigo;
+  public javax.swing.JTextField txtCodigo;
+  public javax.swing.JTextField txtNombre;
   // End of variables declaration//GEN-END:variables
 }

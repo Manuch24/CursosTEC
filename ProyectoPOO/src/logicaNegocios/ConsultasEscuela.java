@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logicaNegocios;
 
 import java.sql.Connection;
@@ -76,29 +71,25 @@ public class ConsultasEscuela extends Conexion {
    } 
   }
   
-   public boolean listarEscuelas(Escuela pEscuela, JComboBox comBox){
+   public void listarEscuelas(JComboBox cbx){
    PreparedStatement ps = null;
     ResultSet rs = null;
    Connection con = getConexion();
   
-   String sql = "SELECT * FROM Escuela WHERE codigoEscuela=?";
+   String sql = "SELECT * FROM Escuela";
   
    try{
      ps = con.prepareStatement(sql);
-     ps.setString(1, pEscuela.getCodigo());
+//     ps.setString(1, pEscuela.getCodigo());
      rs = ps.executeQuery();
      
-     if(rs.next()){
-       
-       pEscuela.setCodigo(rs.getString("codigoEscuela"));
-       pEscuela.setNombre(rs.getString("nombre"));
-
-       return true;
+     while(rs.next()){
+       cbx.addItem(rs.getString("nombre"));
+//       pEscuela.setNombre(rs.getString("nombre"))
      }
-     return false;
+     rs.close();
    }catch(SQLException e){
      System.err.println(e);
-     return false;
    }finally{
      try{
        con.close();
@@ -106,5 +97,37 @@ public class ConsultasEscuela extends Conexion {
        System.err.println(e);
      }
    } 
+  }
+   
+  public String buscarCodigo(String pNombreEscuela) {
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+
+    String sql = "SELECT codigoEscuela FROM Escuela WHERE nombre=?";
+
+    try {
+      ps = con.prepareStatement(sql);
+//      Escuela escuela = new Escuela();
+      ps.setString(1, pNombreEscuela);
+      rs = ps.executeQuery();
+
+      if (rs.next()) {
+
+        pNombreEscuela =(rs.getString("codigoEscuela"));
+
+        return pNombreEscuela;
+      }
+      return "Error";
+    } catch (SQLException e) {
+      System.err.println(e);
+      return "Error";
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
   }
 }

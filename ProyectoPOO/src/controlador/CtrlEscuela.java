@@ -12,6 +12,7 @@ import vista.FrmMenu;
  *
  * @author Bryan Berrocal
  * @author Manuel Chaves
+ * 
  */
 public class CtrlEscuela implements ActionListener {
   private Escuela mod;
@@ -28,9 +29,20 @@ public class CtrlEscuela implements ActionListener {
     this.frm.btnRegistrar.addActionListener(this);
     this.modMenuC = new CtrlMenu();
   }
+
+  CtrlEscuela() {
+    this.mod = new Escuela();
+    this.frm = new FrmEscuela();
+    this.modC = new ConsultasEscuela();
+    this.frm.btnBuscar.addActionListener(this);
+    this.frm.btnMenu.addActionListener(this);
+    this.frm.btnRegistrar.addActionListener(this);
+//    this.modMenuC = new CtrlMenu();
+  }
   
   public void iniciar(){
     frm.setTitle("Registro de Escuelas");
+    frm.setVisible(true);
     frm.setLocationRelativeTo(null);
   }
   
@@ -60,33 +72,23 @@ public class CtrlEscuela implements ActionListener {
         JOptionPane.showMessageDialog(null, "ERROR al buscar escuela  ");
         limpiar();
       }
-      
     }
      
      if(e.getSource() == frm.btnLimpiar){
        frm.txtCodigo.setText("");
        frm.txtNombre.setText("");
      }
-     
+
      if(e.getSource() == frm.btnMenu){
        frm.setVisible(false);
+       CtrlMenu modMenuC = new CtrlMenu();
        modMenuC.iniciar();
-       
      }
   }
-  
-  
-  
-  
-  
   
   public void limpiar(){
     frm.txtCodigo.setText(null);
     frm.txtNombre.setText(null);
 
-  }
-  
-  
-  
-  
+  } 
 }

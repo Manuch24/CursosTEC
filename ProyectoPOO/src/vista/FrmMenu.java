@@ -32,6 +32,7 @@ public class FrmMenu extends javax.swing.JFrame {
     btnAsigarRequisitos = new javax.swing.JButton();
     btnRgistrarPlanes = new javax.swing.JButton();
     btnConsultarPlanes = new javax.swing.JButton();
+    btnEscuela = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +56,8 @@ public class FrmMenu extends javax.swing.JFrame {
       }
     });
 
+    btnEscuela.setText("Registrar Escuela");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -73,7 +76,8 @@ public class FrmMenu extends javax.swing.JFrame {
               .addComponent(btnConsultarPlanes)
               .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(btnRgistrarPlanes)
-                .addComponent(btnRegistrarCurso)))))
+                .addComponent(btnRegistrarCurso))
+              .addComponent(btnEscuela))))
         .addContainerGap(72, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
@@ -89,7 +93,9 @@ public class FrmMenu extends javax.swing.JFrame {
         .addComponent(btnRgistrarPlanes)
         .addGap(18, 18, 18)
         .addComponent(btnConsultarPlanes)
-        .addContainerGap(86, Short.MAX_VALUE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(btnEscuela)
+        .addContainerGap(42, Short.MAX_VALUE))
     );
 
     pack();
@@ -142,6 +148,7 @@ public class FrmMenu extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btnAsigarRequisitos;
   public javax.swing.JButton btnConsultarPlanes;
+  public javax.swing.JButton btnEscuela;
   public javax.swing.JButton btnRegistrarCurso;
   public javax.swing.JButton btnRgistrarPlanes;
   private javax.swing.JLabel jLabel1;
