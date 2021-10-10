@@ -19,9 +19,10 @@ public class Conexion {
   public static Connection getConexion(){
     String conexionUrl = "jdbc:sqlserver://localhost:1433;databaseName=Progra1POO";
        try{  
-         Connection con =  DriverManager.getConnection(conexionUrl,"sa","12345");
+           Connection con =  DriverManager.getConnection(conexionUrl,"sa","12345");
             return con;
-        }catch(SQLException ex){
+            
+       }catch(SQLException ex){
           System.out.println(ex.toString());
             return null;
         }  

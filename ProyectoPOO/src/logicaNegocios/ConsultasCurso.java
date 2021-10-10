@@ -3,9 +3,7 @@ package logicaNegocios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import jdk.internal.org.jline.reader.Parser;
 import static logicaNegocios.Conexion.getConexion;
-import sun.jvm.hotspot.utilities.IntArray;
 
 /**
  *
