@@ -9,6 +9,7 @@ import logicaNegocios.Escuela;
 import vista.FrmCursos;
 import vista.FrmEscuela;
 import vista.FrmMenu;
+import vista.FrmRequisitos;
 
 /**
  *
@@ -23,6 +24,7 @@ public class CtrlMenu implements ActionListener{
   private Escuela mod;
   private ConsultasEscuela modC;
   private FrmEscuela frm;
+  private CtrlRequisitos ctrlRequisitos;
   
   public CtrlMenu(){
     //Se inician los ctrl, vistas y consultas necesarias
@@ -32,6 +34,7 @@ public class CtrlMenu implements ActionListener{
     //se debe inicarlizar los botones
     this.frmMenu.btnRegistrarCurso.addActionListener(this);
     this.frmMenu.btnEscuela.addActionListener(this);
+    this.frmMenu.btnAsignarRequisitos.addActionListener(this);
   }
   
   public void iniciar(){
@@ -54,6 +57,15 @@ public class CtrlMenu implements ActionListener{
     if(e.getSource() == frmMenu.btnEscuela){
       frmMenu.setVisible(false);
       modEscuelaC.iniciar();
+    }
+    
+      if (e.getSource() == frmMenu.btnAsignarRequisitos) {
+      Curso curso = new Curso();
+      ConsultasCurso consultasCurso = new ConsultasCurso();
+      FrmRequisitos frmRequisitos = new FrmRequisitos();
+      this.ctrlRequisitos = new CtrlRequisitos(curso, consultasCurso, frmRequisitos);
+      frmMenu.setVisible(false);
+      ctrlRequisitos.iniciar();
     }
     
   }

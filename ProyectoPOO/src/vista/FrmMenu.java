@@ -29,7 +29,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     jLabel1 = new javax.swing.JLabel();
     btnRegistrarCurso = new javax.swing.JButton();
-    btnAsigarRequisitos = new javax.swing.JButton();
+    btnAsignarRequisitos = new javax.swing.JButton();
     btnRgistrarPlanes = new javax.swing.JButton();
     btnConsultarPlanes = new javax.swing.JButton();
     btnEscuela = new javax.swing.JButton();
@@ -45,7 +45,7 @@ public class FrmMenu extends javax.swing.JFrame {
       }
     });
 
-    btnAsigarRequisitos.setText("Asignar Requisitos y Correquisitos");
+    btnAsignarRequisitos.setText("Asignar Requisitos y Correquisitos");
 
     btnRgistrarPlanes.setText("Registrar Planes");
 
@@ -69,7 +69,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addComponent(jLabel1))
           .addGroup(layout.createSequentialGroup()
             .addGap(72, 72, 72)
-            .addComponent(btnAsigarRequisitos))
+            .addComponent(btnAsignarRequisitos))
           .addGroup(layout.createSequentialGroup()
             .addGap(123, 123, 123)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +88,7 @@ public class FrmMenu extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(btnRegistrarCurso)
         .addGap(7, 7, 7)
-        .addComponent(btnAsigarRequisitos)
+        .addComponent(btnAsignarRequisitos)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(btnRgistrarPlanes)
         .addGap(18, 18, 18)
@@ -146,7 +146,7 @@ public class FrmMenu extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  public javax.swing.JButton btnAsigarRequisitos;
+  public javax.swing.JButton btnAsignarRequisitos;
   public javax.swing.JButton btnConsultarPlanes;
   public javax.swing.JButton btnEscuela;
   public javax.swing.JButton btnRegistrarCurso;

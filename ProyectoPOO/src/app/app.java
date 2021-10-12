@@ -31,6 +31,9 @@ public class app {
   plan1.registrarCursoPlan("SIE", "TI8989", 3, 9, 1);
   plan1.registrarCursoPlan("Conta 1", "TI1012", 3, 9, 1);
   
+    plan1.registrarCursoPlan("SIE", "TI8989", 3, 9, 4);
+
+  
   System.out.println(plan1.toString());
 
 

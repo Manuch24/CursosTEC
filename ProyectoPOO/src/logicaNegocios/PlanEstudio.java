@@ -64,21 +64,24 @@ public class PlanEstudio {
    * 
    * @see validarBloque
    */
-  public void registrarCursoPlan(String nombre, String codigo, int creditos, int horasLectivas, int numBloque){
+  public void registrarCursoPlan(String nombre, String codigo, int creditos, int horasLectivas, int numBloque) {
     Curso curso = new Curso(nombre, codigo, creditos, horasLectivas);
-    if (validarBloque(numBloque) == false){
-     Bloque bloque = new Bloque(numBloque);
-     bloque.agregarCursoBloque(curso); 
-     bloques.add(bloque);
-     System.err.println("Blque y curso registrado al plan: "+getNumPlan() +"\n"+ "Al bloque: "+ bloque.getNumBloque());
-    }
-    else{
-      for(Bloque bloque: bloques){
-        if(bloque.getNumBloque() == numBloque){
-          bloque.agregarCursoBloque(curso);
-          System.err.println("Curso registrado al plan: "+getNumPlan() +"\n"+ "Al bloque: "+ bloque.getNumBloque());
+    if (existeCursoPlan(curso) == false) {
+      if (validarBloque(numBloque) == false) {
+        Bloque bloque = new Bloque(numBloque);
+        bloque.agregarCursoBloque(curso);
+        bloques.add(bloque);
+        System.err.println("Blque y curso " + curso.getCodigo() + " registrado al plan: " + getNumPlan() + "\n" + "Al bloque: " + bloque.getNumBloque());
+      } else {
+        for (Bloque bloque : bloques) {
+          if (bloque.getNumBloque() == numBloque) {
+            bloque.agregarCursoBloque(curso);
+            System.err.println("Curso " + curso.getCodigo() + " registrado al plan: " + getNumPlan() + "\n" + "Al bloque: " + bloque.getNumBloque());
+          }
         }
       }
+    } else {
+      System.err.println("El curso " + curso.getCodigo() + " ya esta en alguno de los bloques del plan perro");
     }
   }
   
@@ -94,6 +97,23 @@ public class PlanEstudio {
       }
       }
       return false;
- 
 }
+  
+  public boolean existeCursoPlan(Curso pCurso){
+    for (Bloque bloque: bloques){
+      //Se crea lista de cursos
+      ArrayList<Curso> cursos = new ArrayList<Curso>();
+      cursos =bloque.getCursos();
+      //validar que de la lista de cursos del bloque no esté el mismo que se vaya a agregar
+      for(Curso curso: cursos){
+        if (curso.getCodigo() == pCurso.getCodigo()){
+          System.err.println("El curso " + pCurso.getNombre() + " ya existe en el plan");
+          return true;
+        }
+      }
+    }
+      return false;
+  }
+  
+  
 }
