@@ -33,6 +33,7 @@ public class FrmMenu extends javax.swing.JFrame {
     btnRgistrarPlanes = new javax.swing.JButton();
     btnConsultarPlanes = new javax.swing.JButton();
     btnEscuela = new javax.swing.JButton();
+    jButton1 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +59,13 @@ public class FrmMenu extends javax.swing.JFrame {
 
     btnEscuela.setText("Registrar Escuela");
 
+    jButton1.setText("Añadir Curso a Plan");
+    jButton1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1ActionPerformed(evt);
+      }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -68,34 +76,39 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGap(148, 148, 148)
             .addComponent(jLabel1))
           .addGroup(layout.createSequentialGroup()
-            .addGap(72, 72, 72)
+            .addGap(122, 122, 122)
+            .addComponent(btnConsultarPlanes))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(69, 69, 69)
             .addComponent(btnAsignarRequisitos))
           .addGroup(layout.createSequentialGroup()
-            .addGap(123, 123, 123)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(btnConsultarPlanes)
-              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGap(111, 111, 111)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+              .addComponent(jButton1)
+              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(btnRgistrarPlanes)
-                .addComponent(btnRegistrarCurso))
-              .addComponent(btnEscuela))))
-        .addContainerGap(72, Short.MAX_VALUE))
+                .addComponent(btnEscuela)
+                .addComponent(btnRegistrarCurso)))))
+        .addContainerGap(85, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
         .addGap(21, 21, 21)
         .addComponent(jLabel1)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnEscuela)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnRgistrarPlanes)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnRegistrarCurso)
-        .addGap(7, 7, 7)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jButton1)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(btnAsignarRequisitos)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(btnRgistrarPlanes)
-        .addGap(18, 18, 18)
         .addComponent(btnConsultarPlanes)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(btnEscuela)
-        .addContainerGap(42, Short.MAX_VALUE))
+        .addGap(46, 46, 46))
     );
 
     pack();
@@ -108,6 +121,10 @@ public class FrmMenu extends javax.swing.JFrame {
   private void btnConsultarPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPlanesActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_btnConsultarPlanesActionPerformed
+
+  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_jButton1ActionPerformed
 
   /**
    * @param args the command line arguments
@@ -151,6 +168,7 @@ public class FrmMenu extends javax.swing.JFrame {
   public javax.swing.JButton btnEscuela;
   public javax.swing.JButton btnRegistrarCurso;
   public javax.swing.JButton btnRgistrarPlanes;
+  private javax.swing.JButton jButton1;
   private javax.swing.JLabel jLabel1;
   // End of variables declaration//GEN-END:variables
 }

@@ -4,11 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import logicaNegocios.ConsultasCurso;
 import logicaNegocios.ConsultasEscuela;
+import logicaNegocios.ConsultasPlan;
 import logicaNegocios.Curso;
 import logicaNegocios.Escuela;
+import logicaNegocios.PlanEstudio;
 import vista.FrmCursos;
 import vista.FrmEscuela;
 import vista.FrmMenu;
+import vista.FrmPlanEstudio;
 import vista.FrmRequisitos;
 
 /**
@@ -25,6 +28,7 @@ public class CtrlMenu implements ActionListener{
   private ConsultasEscuela modC;
   private FrmEscuela frm;
   private CtrlRequisitos ctrlRequisitos;
+  private CtrlPlanEstudio ctrlPlanEstudio;
   
   public CtrlMenu(){
     //Se inician los ctrl, vistas y consultas necesarias
@@ -35,6 +39,7 @@ public class CtrlMenu implements ActionListener{
     this.frmMenu.btnRegistrarCurso.addActionListener(this);
     this.frmMenu.btnEscuela.addActionListener(this);
     this.frmMenu.btnAsignarRequisitos.addActionListener(this);
+    this.frmMenu.btnRgistrarPlanes.addActionListener(this);
   }
   
   public void iniciar(){
@@ -67,6 +72,14 @@ public class CtrlMenu implements ActionListener{
       frmMenu.setVisible(false);
       ctrlRequisitos.iniciar();
     }
+      if(e.getSource() == frmMenu.btnRgistrarPlanes){
+        PlanEstudio plan = new PlanEstudio();
+        ConsultasPlan consultasPlan = new ConsultasPlan();
+        FrmPlanEstudio frmPlanEstudio = new FrmPlanEstudio();
+        this.ctrlPlanEstudio = new CtrlPlanEstudio(plan,consultasPlan, frmPlanEstudio);
+        frmMenu.setVisible(false);
+        ctrlPlanEstudio.iniciar();
+      }
     
   }
   

@@ -51,8 +51,6 @@ public class CtrlCurso implements ActionListener{
     frm.setTitle("Registro de Cursos");
     frm.setVisible(true);
     frm.setLocationRelativeTo(null);
-    //Llenado comboBox con el nombre de las escuelas
-    //llenadoCbxEscuelas();
 
   }
   

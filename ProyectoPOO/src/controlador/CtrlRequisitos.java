@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import logicaNegocios.ConsultasCurso;
 import logicaNegocios.ConsultasEscuela;
+import logicaNegocios.ConsultasPlan;
 import logicaNegocios.Curso;
 import vista.FrmRequisitos;
 
@@ -20,9 +21,11 @@ public class CtrlRequisitos implements ActionListener{
   private Curso mod;
   private FrmRequisitos frm;
   private ConsultasCurso modC;
+  private ConsultasPlan consultasPlan;
   
   public CtrlRequisitos(Curso mod, ConsultasCurso modC, FrmRequisitos frm){
     this.consultasEscuela = new ConsultasEscuela();
+    this.consultasPlan = new ConsultasPlan();
     this.mod = mod;
     this.modC =  modC;
     this.frm = frm;
@@ -33,9 +36,12 @@ public class CtrlRequisitos implements ActionListener{
     this.frm.cbxEscuela.addActionListener(this);
     this.frm.cbxRequisito.addActionListener(this);
     this.frm.cbxCorrequisito.addActionListener(this);
+    this.frm.cbxNumeroPlan.addActionListener(this);
     llenadoCbxEscuelas();
     llenadoCbxCursosEscuela();
     llenadoCbxRequisitos();
+    llenadoCbxPlan();
+    
   }
 
   CtrlRequisitos() {
@@ -52,6 +58,10 @@ public class CtrlRequisitos implements ActionListener{
    public void llenadoCbxRequisitos(){
      modC.listarCursos(this.frm.cbxRequisito);
      modC.listarCursos(this.frm.cbxCorrequisito);
+   }
+   
+   public void llenadoCbxPlan(){
+     consultasPlan.listarPlanes(frm.cbxNumeroPlan, frm.cbxEscuela);
    }
 
 
@@ -73,6 +83,7 @@ public class CtrlRequisitos implements ActionListener{
     }
     if(e.getSource() == frm.cbxEscuela){
       llenadoCbxCursosEscuela();
+      llenadoCbxPlan();
     }
   }  
   

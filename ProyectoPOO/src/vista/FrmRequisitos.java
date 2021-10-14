@@ -41,6 +41,8 @@ public class FrmRequisitos extends javax.swing.JFrame {
     btnRegistrarRequisito = new javax.swing.JButton();
     btnRegistrarCorrequisito = new javax.swing.JButton();
     cbxEscuela = new javax.swing.JComboBox<>();
+    jLabel8 = new javax.swing.JLabel();
+    cbxNumeroPlan = new javax.swing.JComboBox<>();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,18 +85,26 @@ public class FrmRequisitos extends javax.swing.JFrame {
 
     btnRegistrarCorrequisito.setText("Registrar Correquisito");
 
+    jLabel8.setText("Numero de plan");
+
+    cbxNumeroPlan.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cbxNumeroPlanActionPerformed(evt);
+      }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addGap(187, 187, 187)
-        .addComponent(btnVolver)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-      .addGroup(layout.createSequentialGroup()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(layout.createSequentialGroup()
-            .addGap(34, 34, 34)
+            .addGap(181, 181, 181)
+            .addComponent(btnVolver)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(28, 28, 28)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
               .addComponent(jLabel4)
               .addGroup(layout.createSequentialGroup()
@@ -110,7 +120,6 @@ public class FrmRequisitos extends javax.swing.JFrame {
                   .addComponent(jLabel7)
                   .addComponent(cbxCorrequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap()
             .addComponent(btnRegistrarRequisito)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnRegistrarCorrequisito))
@@ -121,15 +130,20 @@ public class FrmRequisitos extends javax.swing.JFrame {
                 .addComponent(jLabel1))
               .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(28, 28, 28)
-                .addComponent(cbxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-              .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(0, 31, Short.MAX_VALUE)))
+                .addComponent(cbxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                  .addGap(18, 18, 18)
+                  .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                  .addComponent(cbxNumeroPlan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                  .addComponent(jLabel3)
+                  .addGap(28, 28, 28)
+                  .addComponent(cbxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGap(0, 37, Short.MAX_VALUE)))
         .addContainerGap())
     );
     layout.setVerticalGroup(
@@ -141,33 +155,33 @@ public class FrmRequisitos extends javax.swing.JFrame {
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel2)
           .addComponent(cbxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(35, 35, 35)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel8)
+          .addComponent(cbxNumeroPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(18, 18, 18)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel3)
           .addComponent(cbxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(layout.createSequentialGroup()
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnVolver)
-            .addGap(20, 20, 20))
-          .addGroup(layout.createSequentialGroup()
-            .addGap(25, 25, 25)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-              .addComponent(jLabel5)
-              .addComponent(jLabel4))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-              .addComponent(jLabel6)
-              .addComponent(jLabel7))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-              .addComponent(cbxRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-              .addComponent(cbxCorrequisito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-              .addComponent(btnRegistrarRequisito)
-              .addComponent(btnRegistrarCorrequisito))
-            .addContainerGap(81, Short.MAX_VALUE))))
+        .addGap(25, 25, 25)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel5)
+          .addComponent(jLabel4))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel6)
+          .addComponent(jLabel7))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(cbxRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(cbxCorrequisito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(btnRegistrarRequisito)
+          .addComponent(btnRegistrarCorrequisito))
+        .addGap(18, 18, 18)
+        .addComponent(btnVolver)
+        .addContainerGap(112, Short.MAX_VALUE))
     );
 
     pack();
@@ -184,6 +198,10 @@ public class FrmRequisitos extends javax.swing.JFrame {
   private void cbxCorrequisitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCorrequisitoActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_cbxCorrequisitoActionPerformed
+
+  private void cbxNumeroPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNumeroPlanActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_cbxNumeroPlanActionPerformed
 
   /**
    * @param args the command line arguments
@@ -228,6 +246,7 @@ public class FrmRequisitos extends javax.swing.JFrame {
   public javax.swing.JComboBox<String> cbxCorrequisito;
   public javax.swing.JComboBox<String> cbxCurso;
   public javax.swing.JComboBox<String> cbxEscuela;
+  public javax.swing.JComboBox<String> cbxNumeroPlan;
   public javax.swing.JComboBox<String> cbxRequisito;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
@@ -236,5 +255,6 @@ public class FrmRequisitos extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel5;
   private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel jLabel7;
+  private javax.swing.JLabel jLabel8;
   // End of variables declaration//GEN-END:variables
 }
