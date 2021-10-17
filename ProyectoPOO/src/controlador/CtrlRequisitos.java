@@ -36,11 +36,10 @@ public class CtrlRequisitos implements ActionListener{
     this.frm.cbxEscuela.addActionListener(this);
     this.frm.cbxRequisito.addActionListener(this);
     this.frm.cbxCorrequisito.addActionListener(this);
-    this.frm.cbxNumeroPlan.addActionListener(this);
     llenadoCbxEscuelas();
     llenadoCbxCursosEscuela();
     llenadoCbxRequisitos();
-    llenadoCbxPlan();
+  
     
   }
 
@@ -60,10 +59,6 @@ public class CtrlRequisitos implements ActionListener{
      modC.listarCursos(this.frm.cbxCorrequisito);
    }
    
-   public void llenadoCbxPlan(){
-     consultasPlan.listarPlanes(frm.cbxNumeroPlan, frm.cbxEscuela);
-   }
-
 
   public void iniciar(){
     frm.setTitle("Registro de Requisitos y Correquisitos");
@@ -83,7 +78,9 @@ public class CtrlRequisitos implements ActionListener{
     }
     if(e.getSource() == frm.cbxEscuela){
       llenadoCbxCursosEscuela();
-      llenadoCbxPlan();
+    }
+    if (e.getSource() == frm.btnRegistrarRequisito){
+      
     }
   }  
   

@@ -8,6 +8,7 @@ import logicaNegocios.ConsultasPlan;
 import logicaNegocios.Curso;
 import logicaNegocios.Escuela;
 import logicaNegocios.PlanEstudio;
+import vista.FrmAnadirCurso;
 import vista.FrmCursos;
 import vista.FrmEscuela;
 import vista.FrmMenu;
@@ -29,17 +30,19 @@ public class CtrlMenu implements ActionListener{
   private FrmEscuela frm;
   private CtrlRequisitos ctrlRequisitos;
   private CtrlPlanEstudio ctrlPlanEstudio;
+  private CtrlAnadirCurso ctrlAnadirCurso;
   
   public CtrlMenu(){
     //Se inician los ctrl, vistas y consultas necesarias
     this.frmMenu = new FrmMenu();
-//    this.modCursoC = new CtrlCurso();
     this.modEscuelaC = new CtrlEscuela();
     //se debe inicarlizar los botones
     this.frmMenu.btnRegistrarCurso.addActionListener(this);
     this.frmMenu.btnEscuela.addActionListener(this);
     this.frmMenu.btnAsignarRequisitos.addActionListener(this);
     this.frmMenu.btnRgistrarPlanes.addActionListener(this);
+    this.frmMenu.btnAnadirCursoPlan.addActionListener(this);
+
   }
   
   public void iniciar(){
@@ -79,6 +82,17 @@ public class CtrlMenu implements ActionListener{
         this.ctrlPlanEstudio = new CtrlPlanEstudio(plan,consultasPlan, frmPlanEstudio);
         frmMenu.setVisible(false);
         ctrlPlanEstudio.iniciar();
+      }
+      if (e.getSource()==frmMenu.btnAnadirCursoPlan){
+        Curso curso = new Curso();
+                PlanEstudio plan = new PlanEstudio();
+
+        ConsultasCurso consultasCurso = new ConsultasCurso();
+        ConsultasPlan consultasPlan = new ConsultasPlan();
+        FrmAnadirCurso frmAnadirCurso = new FrmAnadirCurso();
+        this.ctrlAnadirCurso = new CtrlAnadirCurso(curso, plan,consultasCurso,consultasPlan, frmAnadirCurso);
+        frmMenu.setVisible(false);
+        ctrlAnadirCurso.iniciar();
       }
     
   }

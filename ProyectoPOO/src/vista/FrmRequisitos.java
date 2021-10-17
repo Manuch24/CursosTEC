@@ -41,8 +41,6 @@ public class FrmRequisitos extends javax.swing.JFrame {
     btnRegistrarRequisito = new javax.swing.JButton();
     btnRegistrarCorrequisito = new javax.swing.JButton();
     cbxEscuela = new javax.swing.JComboBox<>();
-    jLabel8 = new javax.swing.JLabel();
-    cbxNumeroPlan = new javax.swing.JComboBox<>();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,14 +83,6 @@ public class FrmRequisitos extends javax.swing.JFrame {
 
     btnRegistrarCorrequisito.setText("Registrar Correquisito");
 
-    jLabel8.setText("Numero de plan");
-
-    cbxNumeroPlan.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        cbxNumeroPlanActionPerformed(evt);
-      }
-    });
-
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -133,16 +123,10 @@ public class FrmRequisitos extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                  .addGap(18, 18, 18)
-                  .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                  .addComponent(cbxNumeroPlan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                  .addComponent(jLabel3)
-                  .addGap(28, 28, 28)
-                  .addComponent(cbxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+              .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(28, 28, 28)
+                .addComponent(cbxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGap(0, 37, Short.MAX_VALUE)))
         .addContainerGap())
     );
@@ -155,11 +139,7 @@ public class FrmRequisitos extends javax.swing.JFrame {
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel2)
           .addComponent(cbxEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(35, 35, 35)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(jLabel8)
-          .addComponent(cbxNumeroPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(18, 18, 18)
+        .addGap(74, 74, 74)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel3)
           .addComponent(cbxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,7 +161,7 @@ public class FrmRequisitos extends javax.swing.JFrame {
           .addComponent(btnRegistrarCorrequisito))
         .addGap(18, 18, 18)
         .addComponent(btnVolver)
-        .addContainerGap(112, Short.MAX_VALUE))
+        .addContainerGap(117, Short.MAX_VALUE))
     );
 
     pack();
@@ -198,10 +178,6 @@ public class FrmRequisitos extends javax.swing.JFrame {
   private void cbxCorrequisitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCorrequisitoActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_cbxCorrequisitoActionPerformed
-
-  private void cbxNumeroPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNumeroPlanActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_cbxNumeroPlanActionPerformed
 
   /**
    * @param args the command line arguments
@@ -246,7 +222,6 @@ public class FrmRequisitos extends javax.swing.JFrame {
   public javax.swing.JComboBox<String> cbxCorrequisito;
   public javax.swing.JComboBox<String> cbxCurso;
   public javax.swing.JComboBox<String> cbxEscuela;
-  public javax.swing.JComboBox<String> cbxNumeroPlan;
   public javax.swing.JComboBox<String> cbxRequisito;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
@@ -255,6 +230,5 @@ public class FrmRequisitos extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel5;
   private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel jLabel7;
-  private javax.swing.JLabel jLabel8;
   // End of variables declaration//GEN-END:variables
 }
