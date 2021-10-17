@@ -3,18 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/ConsultasPlan.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/app/app.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlRequisitos.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlPlanEstudio.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/PlanEstudio.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmRequisitos.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlEscuela.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlMenu.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlAnadirCurso.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmRequisitos.java</file>
+            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/Bloque.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmPlanEstudio.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/ConsultasCurso.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmMenu.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/controlador/CtrlRequisitos.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/logicaNegocios/Curso.java</file>
-            <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmCursos.java</file>
             <file>file:/C:/Users/XT/Desktop/CursosTEC/ProyectoPOO/src/vista/FrmAnadirCurso.java</file>
         </group>
     </open-files>

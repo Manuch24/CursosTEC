@@ -18,16 +18,16 @@ public class Curso {
   private String codigo;
   private int creditos;
   private int horasLectivas;
-  private ArrayList<String> requisitos;
-  private ArrayList<String> correquisitos;
+  private ArrayList<Curso> requisitos;
+  private ArrayList<Curso> correquisitos;
 
   public Curso(String nombre, String codigo, int creditos, int horasLectivas) {
     this.nombre = nombre;
     this.codigo = codigo;
     this.creditos = creditos;
     this.horasLectivas = horasLectivas;
-    this.requisitos = new ArrayList<String>();
-    this.correquisitos = new ArrayList<String>();
+    this.requisitos = new ArrayList<Curso>();
+    this.correquisitos = new ArrayList<Curso>();
   }
 
   public Curso() {}
@@ -64,19 +64,19 @@ public class Curso {
     this.horasLectivas = horasLectivas;
   }
 
-  public ArrayList<String> getRequisitos() {
+  public ArrayList<Curso> getRequisitos() {
     return requisitos;
   }
 
-  public void setRequisitos(ArrayList<String> requisitos) {
+  public void setRequisitos(ArrayList<Curso> requisitos) {
     this.requisitos = requisitos;
   }
 
-  public ArrayList<String> getCorrequisitos() {
+  public ArrayList<Curso> getCorrequisitos() {
     return correquisitos;
   }
 
-  public void setCorrequisitos(ArrayList<String> correquisitos) {
+  public void setCorrequisitos(ArrayList<Curso> correquisitos) {
     this.correquisitos = correquisitos;
   }
 
@@ -85,11 +85,11 @@ public class Curso {
     return "Curso[ " + "nombre= " + nombre + "codigo=" + codigo + ", creditos=" + creditos + ", horasLectivas=" + horasLectivas + ", requisitos=" + requisitos + ", correquisitos=" + correquisitos + '}';
   }
   
-  public void agregarRequisito (String pCurso){
+  public void agregarRequisito (Curso pCurso){
     requisitos.add(pCurso);
   }
   
-  public void agregarCorrequisito (String pCurso){
+  public void agregarCorrequisito (Curso pCurso){
     correquisitos.add(pCurso);
   }
   

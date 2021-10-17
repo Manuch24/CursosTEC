@@ -43,10 +43,16 @@ public class ConsultasCurso {
       }
     }
   }
-
+   /***
+    * 
+    * @param cbxEscuela
+    * @param cbxCurso 
+    */
   public void listarCursoEscuela(JComboBox cbxEscuela, JComboBox cbxCurso) {
     cbxCurso.removeAllItems();
     ConsultasEscuela consultasEscuela = new ConsultasEscuela();
+    //Se usa el método buscar codigo de la escuela según el nombre
+    //Este retorna el codigo para lograr buscar el curso en la base de datos
     String codigoEscuela  = consultasEscuela.buscarCodigo(cbxEscuela.getSelectedItem().toString());
     
     PreparedStatement ps = null;
@@ -59,7 +65,6 @@ public class ConsultasCurso {
       ps = con.prepareStatement(sql);
       String cod = "%"+codigoEscuela+"%";
       ps.setString(1, cod);
-//      System.err.println(cod);
       rs = ps.executeQuery();
 
       while (rs.next()) {
@@ -77,7 +82,10 @@ public class ConsultasCurso {
       }
     }
   }
-  
+  /***
+   * 
+   * @param cbx 
+   */
   public void listarCursos(JComboBox cbx) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -106,33 +114,60 @@ public class ConsultasCurso {
     }
   }
   
-  public void registrarRequisito(Curso pCurso, JComboBox requisito){
-//   
-//     PreparedStatement ps = null;
-//    Connection con = getConexion();
-//
-//    String sql = "";
-//
-//    try {
-//      ps = con.prepareStatement(sql);
-//      ps.setString(1, pCurso.getCodigo());
-//      ps.setString(2, pCurso.getNombre());
-//      ps.setInt(3, pCurso.getCreditos());
-//      ps.setInt(4, pCurso.getHorasLectivas());
-//      ps.execute();
-//      return true;
-//
-//    } catch (SQLException e) {
-//      System.err.println(e);
-//      return false;
-//    } finally {
-//      try {
-//        con.close();
-//      } catch (SQLException e) {
-//        System.err.println(e);
-//      }
-//    }
+  /***
+   * 
+   * @param cbxCurso
+   * @param cbxRequisito
+   * @return
+   * @throws SQLException 
+   */
+  public boolean registrarRequisito(JComboBox cbxCurso, JComboBox cbxRequisito) throws SQLException{
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+
+    String sql = "INSERT INTO cursoRequisito (codigoCurso,idRequisito) VALUES (?,?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, cbxCurso.getSelectedItem().toString());
+      ps.setString(2,cbxRequisito.getSelectedItem().toString());
+      ps.execute();
+      return true;
+     } catch (SQLException e) {
+      System.err.println(e);
+      return false;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
   }
+  
+    public boolean registrarCorrequisito(JComboBox cbxCurso, JComboBox cbxCorrequisito) throws SQLException{
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+
+    String sql = "INSERT INTO cursoCorrequisito (codigoCurso,idCorrequisito) VALUES (?,?)";
+    
+    try{
+      ps = con.prepareStatement(sql);
+      ps.setString(1, cbxCurso.getSelectedItem().toString());
+      ps.setString(2,cbxCorrequisito.getSelectedItem().toString());
+      ps.execute();
+      return true;
+     } catch (SQLException e) {
+      System.err.println(e);
+      return false;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
+  }  
   
   
 

@@ -2,6 +2,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import logicaNegocios.ConsultasCurso;
 import logicaNegocios.ConsultasEscuela;
@@ -80,7 +83,27 @@ public class CtrlRequisitos implements ActionListener{
       llenadoCbxCursosEscuela();
     }
     if (e.getSource() == frm.btnRegistrarRequisito){
-      
+      try {
+        if (modC.registrarRequisito(frm.cbxCurso, frm.cbxRequisito)) {
+          JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
+        } else {
+          JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo requisito  ");
+        }
+      } catch (SQLException ex) {
+        Logger.getLogger(CtrlRequisitos.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }
+
+    if (e.getSource() == frm.btnRegistrarCorrequisito) {
+      try {
+        if (modC.registrarCorrequisito(frm.cbxCurso, frm.cbxCorrequisito)) {
+          JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
+        } else {
+          JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo Corrrequisito  ");
+        }
+      } catch (SQLException ex) {
+        Logger.getLogger(CtrlRequisitos.class.getName()).log(Level.SEVERE, null, ex);
+      }
     }
   }  
   
