@@ -12,8 +12,13 @@ import javax.swing.JComboBox;
  * @author MAnuel Chaves
  * 
  */
-public class ConsultasEscuela extends Conexion {
+public class EscuelaDAO extends Conexion {
   
+  /***
+   * 
+   * @param pEscuela Escuela a ingresar en la base de datos 
+   * @return true si se logra el registro, false si hubo un error a insertar
+   */
   public boolean registar(Escuela pEscuela){
   PreparedStatement ps = null;
   Connection con = getConexion();
@@ -39,6 +44,11 @@ public class ConsultasEscuela extends Conexion {
   } 
   }
   
+  /***
+   * 
+   * @param pEscuela Objeto a retornar en la búsqueda
+   * @return true si encuentra el registro, false si no se encuentra
+   */
   public boolean buscar(Escuela pEscuela){
    PreparedStatement ps = null;
     ResultSet rs = null;
@@ -70,7 +80,10 @@ public class ConsultasEscuela extends Conexion {
      }
    } 
   }
-  
+  /***
+   * Método que ayuda a listar el nombre de las escuelas
+   * @param cbx ComboBox donde se llenará con el nombre de las escuelas
+   */
    public void listarEscuelas(JComboBox cbx){
    PreparedStatement ps = null;
     ResultSet rs = null;
@@ -80,12 +93,10 @@ public class ConsultasEscuela extends Conexion {
   
    try{
      ps = con.prepareStatement(sql);
-//     ps.setString(1, pEscuela.getCodigo());
      rs = ps.executeQuery();
      
      while(rs.next()){
        cbx.addItem(rs.getString("nombre"));
-//       pEscuela.setNombre(rs.getString("nombre"))
      }
      rs.close();
    }catch(SQLException e){
@@ -98,7 +109,11 @@ public class ConsultasEscuela extends Conexion {
      }
    } 
   }
-   
+   /***
+    * Método que busca el código de una escuela según el nombre
+    * @param pNombreEscuela Nombre de la escuela
+    * @return Codigo correspondiente a la escuela
+    */
   public String buscarCodigo(String pNombreEscuela) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -108,14 +123,11 @@ public class ConsultasEscuela extends Conexion {
 
     try {
       ps = con.prepareStatement(sql);
-//      Escuela escuela = new Escuela();
       ps.setString(1, pNombreEscuela);
       rs = ps.executeQuery();
 
       if (rs.next()) {
-
         pNombreEscuela =(rs.getString("codigoEscuela"));
-
         return pNombreEscuela;
       }
       return "Error";

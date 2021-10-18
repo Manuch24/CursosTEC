@@ -7,9 +7,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import logicaNegocios.ConsultasCurso;
-import logicaNegocios.ConsultasEscuela;
-import logicaNegocios.ConsultasPlan;
+import logicaNegocios.CursoDAO;
+import logicaNegocios.EscuelaDAO;
+import logicaNegocios.PlanEstudioDAO;
 import logicaNegocios.Curso;
 import logicaNegocios.PlanEstudio;
 import vista.FrmAnadirCurso;
@@ -20,23 +20,23 @@ import vista.FrmAnadirCurso;
  */
 public class CtrlAnadirCurso implements ActionListener{
   private FrmAnadirCurso frm;
-  private ConsultasCurso consultasCurso;
-  private ConsultasPlan consultasPlan;
+  private CursoDAO cursoDAO;
+  private PlanEstudioDAO planEstudioDAO;
   private Curso curso;
   private PlanEstudio planEstudio;
-  private ConsultasEscuela consultasEscuela;
+  private EscuelaDAO escuelaDAO;
   
   public CtrlAnadirCurso(){
     
   }
   
-  public CtrlAnadirCurso(Curso curso,PlanEstudio planEstudio, ConsultasCurso consultasCurso, ConsultasPlan consultasPlan,FrmAnadirCurso frm){
-    this.consultasCurso = consultasCurso;
-    this.consultasPlan = consultasPlan;
+  public CtrlAnadirCurso(Curso curso,PlanEstudio planEstudio, CursoDAO cursoDAO, PlanEstudioDAO planEstudioDAO,FrmAnadirCurso frm){
+    this.cursoDAO = cursoDAO;
+    this.planEstudioDAO = planEstudioDAO;
     this.planEstudio = planEstudio;
     this.curso = curso;
     this.frm = frm;
-    this.consultasEscuela = new ConsultasEscuela();
+    this.escuelaDAO = new EscuelaDAO();
     
     this.frm.btnVolver.addActionListener(this);
     this.frm.cbxEscuela.addActionListener(this);
@@ -53,15 +53,15 @@ public class CtrlAnadirCurso implements ActionListener{
   }
   
   public void llenadoCbxEscuelas() {
-    consultasEscuela.listarEscuelas(this.frm.cbxEscuela);
+    escuelaDAO.listarEscuelas(frm.cbxEscuela);
   }
 
   public void llenadoCbxPlan() {
-    consultasPlan.listarPlanes(frm.cbxPlan, frm.cbxEscuela);
+    planEstudioDAO.listarPlanes(frm.cbxPlan, frm.cbxEscuela);
   }
   
   public void llenadoCbxCurso() {
-    consultasCurso.listarCursos(this.frm.cbxCurso);
+    cursoDAO.listarCursos(frm.cbxCurso);
   }
 
   @Override

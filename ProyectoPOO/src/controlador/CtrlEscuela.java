@@ -3,7 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import logicaNegocios.ConsultasEscuela;
+import logicaNegocios.EscuelaDAO;
 import logicaNegocios.Escuela;
 import vista.FrmEscuela;
 import vista.FrmMenu;
@@ -15,31 +15,33 @@ import vista.FrmMenu;
  * 
  */
 public class CtrlEscuela implements ActionListener {
-  private Escuela mod;
-  private ConsultasEscuela modC;
+  private Escuela escuela;
+  private EscuelaDAO escuelaDAO;
   private FrmEscuela frm;
-  private CtrlMenu modMenuC;
+  private CtrlMenu ctrlMenu;
 
-  public CtrlEscuela(Escuela mod, ConsultasEscuela modC, FrmEscuela frm) {
-    this.mod = mod;
-    this.modC = modC;
+  public CtrlEscuela(Escuela mod, EscuelaDAO escuelaDAO, FrmEscuela frm) {
+    this.escuela = mod;
+    this.escuelaDAO = escuelaDAO;
     this.frm = frm;
     this.frm.btnBuscar.addActionListener(this);
     this.frm.btnMenu.addActionListener(this);
     this.frm.btnRegistrar.addActionListener(this);
-    this.modMenuC = new CtrlMenu();
+    this.ctrlMenu = new CtrlMenu();
   }
 
   CtrlEscuela() {
-    this.mod = new Escuela();
+    this.escuela = new Escuela();
     this.frm = new FrmEscuela();
-    this.modC = new ConsultasEscuela();
+    this.escuelaDAO = new EscuelaDAO();
     this.frm.btnBuscar.addActionListener(this);
     this.frm.btnMenu.addActionListener(this);
     this.frm.btnRegistrar.addActionListener(this);
-//    this.modMenuC = new CtrlMenu();
   }
   
+  /**
+   * Método que inicia el formulario
+   */
   public void iniciar(){
     frm.setTitle("Registro de Escuelas");
     frm.setVisible(true);
@@ -47,12 +49,15 @@ public class CtrlEscuela implements ActionListener {
   }
   
   @Override
+  /**
+   * Método donde se programan las acciones de cada uno de los botones o eventos
+   */
   public void actionPerformed (ActionEvent e){
     if (e.getSource() == frm.btnRegistrar){
-      mod.setCodigo(frm.txtCodigo.getText());
-      mod.setNombre(frm.txtNombre.getText());
+      escuela.setCodigo(frm.txtCodigo.getText());
+      escuela.setNombre(frm.txtNombre.getText());
       
-      if(modC.registar(mod)){
+      if(escuelaDAO.registar(escuela)){
         JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
         limpiar();
     }else{
@@ -62,11 +67,11 @@ public class CtrlEscuela implements ActionListener {
     }
     
      if (e.getSource() == frm.btnBuscar){
-      mod.setCodigo(frm.txtCodigo.getText());
-
-      if(modC.buscar(mod)){
-        frm.txtCodigo.setText(mod.getCodigo());
-        frm.txtNombre.setText(mod.getNombre());
+      escuela.setCodigo(frm.txtCodigo.getText());
+      
+      if(escuelaDAO.buscar(escuela)){
+        frm.txtCodigo.setText(escuela.getCodigo());
+        frm.txtNombre.setText(escuela.getNombre());
 //        limpiar();
     }else{
         JOptionPane.showMessageDialog(null, "ERROR al buscar escuela  ");

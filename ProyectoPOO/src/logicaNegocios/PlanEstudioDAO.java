@@ -18,7 +18,7 @@ import static logicaNegocios.Conexion.getConexion;
  *
  * @author XT
  */
-public class ConsultasPlan extends Conexion {
+public class PlanEstudioDAO extends Conexion {
 
   public boolean registrar(PlanEstudio pPlanEstudio, JComboBox cbxEscuela, String date){
   PreparedStatement ps = null;
@@ -29,7 +29,7 @@ public class ConsultasPlan extends Conexion {
   
     try{
     ps = con.prepareStatement(sql);
-    ConsultasEscuela consultasEscuela = new ConsultasEscuela();
+    EscuelaDAO consultasEscuela = new EscuelaDAO();
     java.sql.Date date1 = java.sql.Date.valueOf(date);
     
     ps.setString(1, consultasEscuela.buscarCodigo(cbxEscuela.getSelectedItem().toString()));
@@ -59,7 +59,7 @@ public class ConsultasPlan extends Conexion {
     Connection con = getConexion();
     
     //Se llama a consultasEscuela
-    ConsultasEscuela consultasEscuela = new ConsultasEscuela();
+    EscuelaDAO consultasEscuela = new EscuelaDAO();
 
     String sql = "SELECT numPlan FROM EscuelaPlan WHERE codigoEscuela =?";
 
@@ -82,6 +82,53 @@ public class ConsultasPlan extends Conexion {
         System.err.println(e);
       }
     }
+  }
+  
+  public String numeroPlan(String numPlan) {
+
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+
+    String sql = "SELECT numPlan FROM PlanEstudio WHERE numPlan = ?";
+
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setString(1, numPlan);
+      rs = ps.executeQuery();
+      if (rs.next()) {
+        String numPlanBD =(rs.getString("numPlan"));
+        return numPlanBD;
+      }
+      rs.close();
+      return "No existe";
+    } catch (SQLException e) {
+      System.err.println(e);
+      return "No existe";
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
+  }
+  
+//  public boolean existeCursoPlan(String codigoCurso){
+//    PreparedStatement ps = null;
+//    ResultSet rs = null;
+//    Connection con = getConexion();
+//    
+//    String sql = "SELECT * FROM BloqueCurso WHERE codigoCurso = ?";
+//    if
+//    return true;
+//  }
+  
+  public boolean existeBloque(String numBloque){
+    return true;
+  }
+  public boolean ingresarCurso(String numeroPlan, String codigoCurso, String numBloque){
+    return true;
   }
 
 }

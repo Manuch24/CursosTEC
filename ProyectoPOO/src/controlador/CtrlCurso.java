@@ -3,8 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import logicaNegocios.ConsultasCurso;
-import logicaNegocios.ConsultasEscuela;
+import logicaNegocios.CursoDAO;
+import logicaNegocios.EscuelaDAO;
 import logicaNegocios.Curso;
 import vista.FrmCursos;
 
@@ -15,24 +15,23 @@ import vista.FrmCursos;
  * 
  */
 public class CtrlCurso implements ActionListener{
-  private Curso mod;
-  private ConsultasCurso modC;
+  private Curso curso;
+  private CursoDAO cursoDAO;
   private FrmCursos frm;
-  private CtrlMenu ctrlMenu; //Para regresar al menu
-  private ConsultasEscuela consultasEscuela;
+  private EscuelaDAO escuelaDAO;
   
   public CtrlCurso(){
     this.frm = new FrmCursos();
-    this.mod = new Curso();
-    this.modC = new ConsultasCurso();
-    this.consultasEscuela = new ConsultasEscuela();
+    this.curso = new Curso();
+    this.cursoDAO = new CursoDAO();
+    this.escuelaDAO = new EscuelaDAO();
   }
   
-  public CtrlCurso(Curso mod, ConsultasCurso modC, FrmCursos frm ){
-    this.mod = mod;
-    this.modC = modC;
+  public CtrlCurso(Curso curso, CursoDAO cursoDAO, FrmCursos frm ){
+    this.curso = curso;
+    this.cursoDAO = cursoDAO;
     this.frm = frm; 
-    this.consultasEscuela = new ConsultasEscuela();
+    this.escuelaDAO = new EscuelaDAO();
     this.frm.txtNombre.addActionListener(this);
     this.frm.btnVolver.addActionListener(this);
     this.frm.txtCodigo.addActionListener(this);
@@ -44,7 +43,7 @@ public class CtrlCurso implements ActionListener{
   }
   
   public void setLetrasCodigo(){
-    frm.lblCodigo.setText(consultasEscuela.buscarCodigo(frm.cbxEscuela.getSelectedItem().toString()));
+    frm.lblCodigo.setText(escuelaDAO.buscarCodigo(frm.cbxEscuela.getSelectedItem().toString()));
   }
   
   public void iniciar(){
@@ -55,7 +54,7 @@ public class CtrlCurso implements ActionListener{
   }
   
   public void llenadoCbxEscuelas(){
-    consultasEscuela.listarEscuelas(this.frm.cbxEscuela);
+    escuelaDAO.listarEscuelas(frm.cbxEscuela);
   }
   
   private void limpiar() {
@@ -79,12 +78,13 @@ public class CtrlCurso implements ActionListener{
     }
     if (e.getSource()==frm.btnRegistar){
       setLetrasCodigo();
-      mod.setCodigo(frm.lblCodigo.getText() + frm.txtCodigo.getText());
-      mod.setNombre(frm.txtNombre.getText());
-      mod.setCreditos( Integer.parseInt(frm.cbxCreditos.getSelectedItem().toString()));
-      mod.setCreditos( Integer.parseInt(frm.cbxHorasLectivas.getSelectedItem().toString()));
-      if(modC.registar(mod)){
-        JOptionPane.showMessageDialog(null, "Registro del  curso " +mod.getNombre()+ " guardado");
+      curso.setCodigo(frm.lblCodigo.getText() + frm.txtCodigo.getText());
+      curso.setNombre(frm.txtNombre.getText());
+      curso.setCreditos( Integer.parseInt(frm.cbxCreditos.getSelectedItem().toString()));
+      curso.setCreditos( Integer.parseInt(frm.cbxHorasLectivas.getSelectedItem().toString()));
+      
+      if(cursoDAO.registar(curso)){
+        JOptionPane.showMessageDialog(null, "Registro del  curso " +curso.getNombre()+ " guardado");
       }else{
         JOptionPane.showMessageDialog(null, "Error al guardar curso  ");
       } 

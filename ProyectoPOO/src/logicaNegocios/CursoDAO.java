@@ -13,7 +13,7 @@ import static logicaNegocios.Conexion.getConexion;
  * @author Manuel Chaves
  * 
  */
-public class ConsultasCurso {
+public class CursoDAO {
   
   
   
@@ -50,7 +50,7 @@ public class ConsultasCurso {
     */
   public void listarCursoEscuela(JComboBox cbxEscuela, JComboBox cbxCurso) {
     cbxCurso.removeAllItems();
-    ConsultasEscuela consultasEscuela = new ConsultasEscuela();
+    EscuelaDAO consultasEscuela = new EscuelaDAO();
     //Se usa el método buscar codigo de la escuela según el nombre
     //Este retorna el codigo para lograr buscar el curso en la base de datos
     String codigoEscuela  = consultasEscuela.buscarCodigo(cbxEscuela.getSelectedItem().toString());
@@ -87,6 +87,7 @@ public class ConsultasCurso {
    * @param cbx 
    */
   public void listarCursos(JComboBox cbx) {
+    cbx.removeAllItems();
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();

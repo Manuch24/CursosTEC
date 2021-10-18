@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import logicaNegocios.ConsultasCurso;
-import logicaNegocios.ConsultasEscuela;
-import logicaNegocios.ConsultasPlan;
+import logicaNegocios.CursoDAO;
+import logicaNegocios.EscuelaDAO;
+import logicaNegocios.PlanEstudioDAO;
 import logicaNegocios.Curso;
 import vista.FrmRequisitos;
 
@@ -20,17 +20,17 @@ import vista.FrmRequisitos;
  * 
  */
 public class CtrlRequisitos implements ActionListener{
-  private ConsultasEscuela consultasEscuela;
+  private EscuelaDAO escuelaDAO;
   private Curso mod;
   private FrmRequisitos frm;
-  private ConsultasCurso modC;
-  private ConsultasPlan consultasPlan;
+  private CursoDAO cursoDAO;
+  private PlanEstudioDAO planEstudioDAO;
   
-  public CtrlRequisitos(Curso mod, ConsultasCurso modC, FrmRequisitos frm){
-    this.consultasEscuela = new ConsultasEscuela();
-    this.consultasPlan = new ConsultasPlan();
-    this.mod = mod;
-    this.modC =  modC;
+  public CtrlRequisitos(Curso curso, CursoDAO cursoDAO, FrmRequisitos frm){
+    this.escuelaDAO = new EscuelaDAO();
+    this.planEstudioDAO = new PlanEstudioDAO();
+    this.mod = curso;
+    this.cursoDAO =  cursoDAO;
     this.frm = frm;
     this.frm.btnVolver.addActionListener(this);
     this.frm.btnRegistrarRequisito.addActionListener(this);
@@ -49,22 +49,34 @@ public class CtrlRequisitos implements ActionListener{
   CtrlRequisitos() {
   }
   
+  /***
+   * Método que completa el JComboBox con las escuelas registradas 
+   */
    public void llenadoCbxEscuelas(){
-    consultasEscuela.listarEscuelas(this.frm.cbxEscuela);
+    escuelaDAO.listarEscuelas(this.frm.cbxEscuela);
   }
    
+   /***
+    * Método que llena el JComboBox que corresponde a los cursos según la escuela
+    */
    public void llenadoCbxCursosEscuela(){
-     modC.listarCursoEscuela(this.frm.cbxEscuela,this.frm.cbxCurso);
+     cursoDAO.listarCursoEscuela(this.frm.cbxEscuela,this.frm.cbxCurso);
    }
    
+   /**
+    * Método que llena los JComboBox de requisitos y correquistitos
+    */
    public void llenadoCbxRequisitos(){
-//     modC.listarCursosRequisitos(this.frm.cbxRequisito,this.frm.cbxCurso);
-//     modC.listarCursosRequisitos(this.frm.cbxCorrequisito, this.frm.cbxCurso);
-     modC.listarCursos(this.frm.cbxRequisito);
-     modC.listarCursos(this.frm.cbxCorrequisito);
+//     cursoDAO.listarCursosRequisitos(this.frm.cbxRequisito,this.frm.cbxCurso);
+//     cursoDAO.listarCursosRequisitos(this.frm.cbxCorrequisito, this.frm.cbxCurso);
+     cursoDAO.listarCursos(this.frm.cbxRequisito);
+     cursoDAO.listarCursos(this.frm.cbxCorrequisito);
    }
    
-
+/***
+ * Método que inicia la vista del formulario
+ * 
+ */
   public void iniciar(){
     frm.setTitle("Registro de Requisitos y Correquisitos");
     frm.setVisible(true);
@@ -88,12 +100,13 @@ public class CtrlRequisitos implements ActionListener{
     if(e.getSource() == frm.cbxEscuela){
       llenadoCbxCursosEscuela();
     }
+    
     if (e.getSource() == frm.btnRegistrarRequisito){
       try {
-        if (modC.registrarRequisito(frm.cbxCurso, frm.cbxRequisito)) {
+        if (cursoDAO.registrarRequisito(frm.cbxCurso, frm.cbxRequisito)) {
           JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
         } else {
-          JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo requisito  ");
+          JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo requisito");
         }
       } catch (SQLException ex) {
         Logger.getLogger(CtrlRequisitos.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,7 +115,7 @@ public class CtrlRequisitos implements ActionListener{
 
     if (e.getSource() == frm.btnRegistrarCorrequisito) {
       try {
-        if (modC.registrarCorrequisito(frm.cbxCurso, frm.cbxCorrequisito)) {
+        if (cursoDAO.registrarCorrequisito(frm.cbxCurso, frm.cbxCorrequisito)) {
           JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
         } else {
           JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo Corrrequisito  ");

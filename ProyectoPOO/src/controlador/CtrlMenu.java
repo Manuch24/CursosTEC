@@ -2,9 +2,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import logicaNegocios.ConsultasCurso;
-import logicaNegocios.ConsultasEscuela;
-import logicaNegocios.ConsultasPlan;
+import logicaNegocios.CursoDAO;
+import logicaNegocios.EscuelaDAO;
+import logicaNegocios.PlanEstudioDAO;
 import logicaNegocios.Curso;
 import logicaNegocios.Escuela;
 import logicaNegocios.PlanEstudio;
@@ -23,11 +23,11 @@ import vista.FrmRequisitos;
  */
 public class CtrlMenu implements ActionListener{
   private FrmMenu frmMenu;
-  private CtrlCurso modCursoC;
-  private CtrlEscuela modEscuelaC;
-  private Escuela mod;
-  private ConsultasEscuela modC;
-  private FrmEscuela frm;
+  private CtrlCurso ctrlCurso;
+  private CtrlEscuela ctrlEscuela;
+//  private Escuela mod;
+//  private EscuelaDAO modC;
+//  private FrmEscuela frm;
   private CtrlRequisitos ctrlRequisitos;
   private CtrlPlanEstudio ctrlPlanEstudio;
   private CtrlAnadirCurso ctrlAnadirCurso;
@@ -35,7 +35,7 @@ public class CtrlMenu implements ActionListener{
   public CtrlMenu(){
     //Se inician los ctrl, vistas y consultas necesarias
     this.frmMenu = new FrmMenu();
-    this.modEscuelaC = new CtrlEscuela();
+    this.ctrlEscuela = new CtrlEscuela();
     //se debe inicarlizar los botones
     this.frmMenu.btnRegistrarCurso.addActionListener(this);
     this.frmMenu.btnEscuela.addActionListener(this);
@@ -56,45 +56,44 @@ public class CtrlMenu implements ActionListener{
     //Abre la vista curso por medio del ctrlCurso, este tiene médoto iniciar
     if (e.getSource() == frmMenu.btnRegistrarCurso){
       Curso curso = new Curso();
-      ConsultasCurso consultasCurso = new ConsultasCurso();
+      CursoDAO cursoDAO = new CursoDAO();
       FrmCursos frmCurso = new FrmCursos();   
-      this.modCursoC = new CtrlCurso(curso, consultasCurso, frmCurso);
+      this.ctrlCurso = new CtrlCurso(curso, cursoDAO, frmCurso);
       frmMenu.setVisible(false);
-      modCursoC.iniciar();
+      ctrlCurso.iniciar();
     }
     if(e.getSource() == frmMenu.btnEscuela){
       frmMenu.setVisible(false);
-      modEscuelaC.iniciar();
+      ctrlEscuela.iniciar();
     }
     
       if (e.getSource() == frmMenu.btnAsignarRequisitos) {
       Curso curso = new Curso();
-      ConsultasCurso consultasCurso = new ConsultasCurso();
+      CursoDAO cursoDAO = new CursoDAO();
       FrmRequisitos frmRequisitos = new FrmRequisitos();
-      this.ctrlRequisitos = new CtrlRequisitos(curso, consultasCurso, frmRequisitos);
+      this.ctrlRequisitos = new CtrlRequisitos(curso, cursoDAO, frmRequisitos);
       frmMenu.setVisible(false);
       ctrlRequisitos.iniciar();
     }
       if(e.getSource() == frmMenu.btnRgistrarPlanes){
         PlanEstudio plan = new PlanEstudio();
-        ConsultasPlan consultasPlan = new ConsultasPlan();
+        PlanEstudioDAO PlanEstudioDAO = new PlanEstudioDAO();
         FrmPlanEstudio frmPlanEstudio = new FrmPlanEstudio();
-        this.ctrlPlanEstudio = new CtrlPlanEstudio(plan,consultasPlan, frmPlanEstudio);
+        this.ctrlPlanEstudio = new CtrlPlanEstudio(plan,PlanEstudioDAO, frmPlanEstudio);
         frmMenu.setVisible(false);
         ctrlPlanEstudio.iniciar();
       }
       if (e.getSource()==frmMenu.btnAnadirCursoPlan){
-        Curso curso = new Curso();
-                PlanEstudio plan = new PlanEstudio();
+      Curso curso = new Curso();
+      PlanEstudio planEstudio = new PlanEstudio();
+      CursoDAO cursoDAO = new CursoDAO();
+      PlanEstudioDAO PlanEstudioDAO = new PlanEstudioDAO();
+      FrmAnadirCurso frmAnadirCurso = new FrmAnadirCurso();
+      this.ctrlAnadirCurso = new CtrlAnadirCurso(curso, planEstudio, cursoDAO, PlanEstudioDAO, frmAnadirCurso);
+      frmMenu.setVisible(false);
+      ctrlAnadirCurso.iniciar();
+    }
 
-        ConsultasCurso consultasCurso = new ConsultasCurso();
-        ConsultasPlan consultasPlan = new ConsultasPlan();
-        FrmAnadirCurso frmAnadirCurso = new FrmAnadirCurso();
-        this.ctrlAnadirCurso = new CtrlAnadirCurso(curso, plan,consultasCurso,consultasPlan, frmAnadirCurso);
-        frmMenu.setVisible(false);
-        ctrlAnadirCurso.iniciar();
-      }
-    
   }
   
 }

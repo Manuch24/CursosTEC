@@ -4,7 +4,7 @@ import controlador.CtrlEscuela;
 import java.time.LocalDate;
 import java.util.Date;
 import logicaNegocios.Bloque;
-import logicaNegocios.ConsultasEscuela;
+import logicaNegocios.EscuelaDAO;
 import logicaNegocios.Curso;
 import logicaNegocios.PlanEstudio;
 import logicaNegocios.Escuela;
@@ -19,7 +19,7 @@ public class app {
   
   public static void main(String[] args){ 
     Escuela mod = new Escuela();
-    ConsultasEscuela modC = new ConsultasEscuela();
+    EscuelaDAO modC = new EscuelaDAO();
     FrmEscuela frm = new FrmEscuela();
     
     CtrlEscuela ctrl = new CtrlEscuela(mod, modC, frm);
