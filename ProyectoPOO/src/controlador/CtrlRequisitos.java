@@ -58,6 +58,8 @@ public class CtrlRequisitos implements ActionListener{
    }
    
    public void llenadoCbxRequisitos(){
+//     modC.listarCursosRequisitos(this.frm.cbxRequisito,this.frm.cbxCurso);
+//     modC.listarCursosRequisitos(this.frm.cbxCorrequisito, this.frm.cbxCurso);
      modC.listarCursos(this.frm.cbxRequisito);
      modC.listarCursos(this.frm.cbxCorrequisito);
    }
@@ -79,6 +81,10 @@ public class CtrlRequisitos implements ActionListener{
       CtrlMenu ctrlMenu = new CtrlMenu();
       ctrlMenu.iniciar();
     }
+    if(e.getSource()==frm.cbxCurso){
+      llenadoCbxRequisitos();
+    }
+    
     if(e.getSource() == frm.cbxEscuela){
       llenadoCbxCursosEscuela();
     }

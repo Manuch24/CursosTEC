@@ -170,7 +170,35 @@ public class ConsultasCurso {
   }  
   
   
+public void listarCursosRequisitos(JComboBox cbxRequisito, JComboBox cbxCurso ) {
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
 
+    String sql = "SELECT codigoCurso FROM Curso EXCEPT SELECT codigoCurso FROM Curso WHERE codigoCurso =?";
+
+    try {
+      String cod = cbxCurso.getSelectedItem().toString();
+      ps = con.prepareStatement(sql);
+      ps.setString(1, cod);
+      rs = ps.executeQuery();
+
+      while (rs.next()) {
+        cbxRequisito.addItem(rs.getString("codigoCurso"));
+//       pEscuela.setNombre(rs.getString("nombre"))
+      }
+      rs.close();
+    } catch (SQLException e) {
+      System.err.println(e);
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
+  }
+  
     
 }
 
