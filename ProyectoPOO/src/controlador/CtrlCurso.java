@@ -80,7 +80,7 @@ public class CtrlCurso implements ActionListener{
       setLetrasCodigo();
       curso.setCodigo(frm.lblCodigo.getText() + frm.txtCodigo.getText());
       curso.setNombre(frm.txtNombre.getText());
-      curso.setCreditos( Integer.parseInt(frm.cbxCreditos.getSelectedItem().toString()));
+      curso.setHorasLectivas( Integer.parseInt(frm.cbxCreditos.getSelectedItem().toString()));
       curso.setCreditos( Integer.parseInt(frm.cbxHorasLectivas.getSelectedItem().toString()));
       
       if(cursoDAO.registar(curso)){

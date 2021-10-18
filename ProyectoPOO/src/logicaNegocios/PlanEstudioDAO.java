@@ -9,9 +9,12 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import static logicaNegocios.Conexion.getConexion;
 
 /**
@@ -97,7 +100,7 @@ public class PlanEstudioDAO extends Conexion {
       ps.setString(1, numPlan);
       rs = ps.executeQuery();
       if (rs.next()) {
-        String numPlanBD =(rs.getString("numPlan"));
+        String numPlanBD = (rs.getString("numPlan"));
         return numPlanBD;
       }
       rs.close();
@@ -113,22 +116,111 @@ public class PlanEstudioDAO extends Conexion {
       }
     }
   }
-  
-//  public boolean existeCursoPlan(String codigoCurso){
-//    PreparedStatement ps = null;
-//    ResultSet rs = null;
-//    Connection con = getConexion();
-//    
-//    String sql = "SELECT * FROM BloqueCurso WHERE codigoCurso = ?";
-//    if
-//    return true;
-//  }
-  
-  public boolean existeBloque(String numBloque){
-    return true;
+
+  public String existeCursoPlan(String codigoCurso, String numPlan) {
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+
+    String sql = "SELECT * FROM Bloque WHERE codigoCurso = ? AND numPlan = ?";
+
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setString(1, codigoCurso);
+      ps.setString(2, numPlan);
+      rs = ps.executeQuery();
+      if (rs.next()) {
+        String codigoCursoBD = (rs.getString("codigoCurso"));
+        return codigoCursoBD;
+      }
+      rs.close();
+      return "No existe";
+    } catch (SQLException e) {
+      System.err.println(e);
+      return "No existe";
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
+
   }
-  public boolean ingresarCurso(String numeroPlan, String codigoCurso, String numBloque){
-    return true;
+  
+
+  public boolean ingresarCurso(String numBloque, String numPlan, String codigoCurso) {
+    PreparedStatement ps = null;
+    Connection con = getConexion();
+
+    String sql = "INSERT INTO Bloque (numBloque,numPlan,codigoCurso) VALUES (?,?,?)";
+
+    try {
+      ps = con.prepareStatement(sql);
+
+      ps.setInt(1, Integer.parseInt(numBloque));
+      ps.setString(2, numPlan);
+      ps.setString(3, codigoCurso);
+      ps.execute();
+      return true;
+    } catch (SQLException e) {
+      System.err.println(e);
+      return false;
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
   }
 
+  public void consultarPlan(String numPlan, JTable JTableBloque) {
+
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+
+    String sql = "SELECT Bloque.codigoCurso, Curso.nombreCurso, Bloque.numBloque, Curso.horaslectivas, Curso.creditos\n" +
+                        "FROM Bloque INNER JOIN Curso ON Bloque.codigoCurso = Curso.codigoCurso WHERE Bloque.numPlan = ?\n" +
+                         " ORDER BY Bloque.numBloque ASC";
+
+    try {
+      //Se declara el modelo de la tabla
+      DefaultTableModel modelo = new DefaultTableModel();
+      JTableBloque.setModel(modelo);
+//      String numPlan = cbxPlan.getSelectedItem().toString();
+      ps = con.prepareStatement(sql);
+      ps.setString(1, numPlan);
+      rs = ps.executeQuery();
+      
+      ResultSetMetaData rsMd = rs.getMetaData();
+      int cantColumnas = rsMd.getColumnCount();
+      
+      modelo.addColumn("codigoCurso");
+      modelo.addColumn("nombreCurso");
+      modelo.addColumn("numBloque");
+      modelo.addColumn("horasLectivas");
+      modelo.addColumn("creditos");
+
+    
+        while (rs.next()) {
+          Object[] filas = new Object[cantColumnas];
+          
+          for(int i = 0; i < cantColumnas; i++){
+            filas[i] = rs.getObject(i+1);
+          }
+          modelo.addRow(filas);
+      }
+      rs.close();
+    } catch (SQLException e) {
+      System.err.println(e);
+    } finally {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
+  }
 }

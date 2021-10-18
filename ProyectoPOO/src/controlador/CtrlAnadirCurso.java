@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import logicaNegocios.CursoDAO;
 import logicaNegocios.EscuelaDAO;
 import logicaNegocios.PlanEstudioDAO;
@@ -37,10 +34,10 @@ public class CtrlAnadirCurso implements ActionListener{
     this.curso = curso;
     this.frm = frm;
     this.escuelaDAO = new EscuelaDAO();
-    
     this.frm.btnVolver.addActionListener(this);
     this.frm.cbxEscuela.addActionListener(this);
     this.frm.cbxPlan.addActionListener(this);
+    this.frm.btnRegistrar.addActionListener(this);
   }
   
     public void iniciar() {
@@ -63,6 +60,24 @@ public class CtrlAnadirCurso implements ActionListener{
   public void llenadoCbxCurso() {
     cursoDAO.listarCursos(frm.cbxCurso);
   }
+  /***
+   * Metodo que valida si el curso ya existe en el plan seleccionado
+   * @param codigoCurso codigo del curso del JComboBox curso
+   * @param numPlan Item seleccionado del JComboBox plan
+   * @return true si existe, false si no existe
+   * 
+   */
+  public boolean existeCurso(JComboBox cbxCurso, JComboBox cbxPlan ){
+    String codigoCurso = cbxCurso.getSelectedItem().toString();
+    String numPlan = cbxPlan.getSelectedItem().toString();
+
+    if(planEstudioDAO.existeCursoPlan(codigoCurso,numPlan)== "No existe"){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
 
   @Override
   public void actionPerformed(ActionEvent e) {
@@ -76,8 +91,17 @@ public class CtrlAnadirCurso implements ActionListener{
     if (e.getSource() == frm.cbxEscuela) {
       llenadoCbxPlan();
     }
+    if (e.getSource() == frm.btnRegistrar){
+      if(existeCurso(frm.cbxCurso, frm.cbxPlan)==true){
+        JOptionPane.showMessageDialog(null, "El curso ya se encuentra en el plan "+frm.cbxPlan.getSelectedItem().toString()
+        + " en el bloque " +frm.cbxBloque.getSelectedItem().toString());
+      }
+      else{
+        planEstudioDAO.ingresarCurso(frm.cbxBloque.getSelectedItem().toString(), frm.cbxPlan.getSelectedItem().toString(), 
+                frm.cbxCurso.getSelectedItem().toString());
+        JOptionPane.showMessageDialog(null, "Curso Ingresado al plan: " + frm.cbxPlan.getSelectedItem().toString() + " en el bloque " +
+                frm.cbxBloque.getSelectedItem().toString());
+      }
+    }
   }
-    
-    
-  
 }

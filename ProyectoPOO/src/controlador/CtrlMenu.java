@@ -9,11 +9,13 @@ import logicaNegocios.Curso;
 import logicaNegocios.Escuela;
 import logicaNegocios.PlanEstudio;
 import vista.FrmAnadirCurso;
+import vista.FrmConsultarPlan;
 import vista.FrmCursos;
 import vista.FrmEscuela;
 import vista.FrmMenu;
 import vista.FrmPlanEstudio;
 import vista.FrmRequisitos;
+
 
 /**
  *
@@ -42,7 +44,7 @@ public class CtrlMenu implements ActionListener{
     this.frmMenu.btnAsignarRequisitos.addActionListener(this);
     this.frmMenu.btnRgistrarPlanes.addActionListener(this);
     this.frmMenu.btnAnadirCursoPlan.addActionListener(this);
-
+    this.frmMenu.btnConsultarPlanes.addActionListener(this);
   }
   
   public void iniciar(){
@@ -93,6 +95,14 @@ public class CtrlMenu implements ActionListener{
       frmMenu.setVisible(false);
       ctrlAnadirCurso.iniciar();
     }
+     if(e.getSource()==frmMenu.btnConsultarPlanes){
+       EscuelaDAO escuelaDAO = new EscuelaDAO();
+       PlanEstudioDAO planEstudioDAO = new PlanEstudioDAO();
+       FrmConsultarPlan frmConsultarPlan = new FrmConsultarPlan();
+       CtrlConsultarPlan ctrlConsultarPlan = new CtrlConsultarPlan(escuelaDAO, planEstudioDAO, frmConsultarPlan);
+      frmMenu.setVisible(false);
+      ctrlConsultarPlan.iniciar();
+     } 
 
   }
   

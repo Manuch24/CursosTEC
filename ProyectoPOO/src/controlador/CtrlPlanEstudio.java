@@ -55,17 +55,21 @@ public class CtrlPlanEstudio implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == frm.btnRegistrar) {
-      if (planEstudioDAO.numeroPlan(frm.txtCodigoPlan.getText()) == frm.txtCodigoPlan.getText()) {
-        JOptionPane.showMessageDialog(null, "");
+      if (frm.txtCodigoPlan.getText() == "" || frm.jDateChooser1.getDate() == null) {
+        JOptionPane.showMessageDialog(null, "Llene  todos los campos");
       } else {
-        planEstudio.setNumPlan(Integer.parseInt(frm.txtCodigoPlan.getText()));
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String format = simpleDateFormat.format(frm.jDateChooser1.getDate());
-        //mod.setVigencia(simpleDateFormat.format(frm.jDateChooser1.getDate()));
-        if (planEstudioDAO.registrar(planEstudio, frm.cbxEscuela, format)) {
-          JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
+        if (planEstudioDAO.numeroPlan(frm.txtCodigoPlan.getText()).equals(frm.txtCodigoPlan.getText())) {
+          JOptionPane.showMessageDialog(null, "Error: El número de plan escogido ya lo utiliza otra escuela");
         } else {
-          JOptionPane.showMessageDialog(null, "Error este número de plan ya lo usa otra escuela  ");
+          planEstudio.setNumPlan(Integer.parseInt(frm.txtCodigoPlan.getText()));
+          SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+          String format = simpleDateFormat.format(frm.jDateChooser1.getDate());
+          
+          if (planEstudioDAO.registrar(planEstudio, frm.cbxEscuela, format)) {
+            JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
+          } else {
+            JOptionPane.showMessageDialog(null, "Error este número de plan ya lo usa otra escuela  ");
+          }
         }
       }
     }
