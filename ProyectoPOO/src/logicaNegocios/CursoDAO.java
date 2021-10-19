@@ -210,9 +210,12 @@ public void consultarRequisitos(String codCurso,JTable JTableElmRequisitos){
     ResultSet rs = null;
     Connection con = getConexion();
     
-    String sql = "select Curso.nombreCurso,cursoRequisito.idRequisito "
-            + "from Curso inner join cursoCorrequisito on cursoCorrequisito.codigoCurso=Curso.codigoCurso"
-            + " inner join cursoRequisito on cursoRequisito.codigoCurso=Curso.codigoCurso where Curso.codigoCurso = ?";
+//    String sql = "select Curso.nombreCurso,cursoRequisito.idRequisito "
+//            + "from Curso inner join cursoCorrequisito on cursoCorrequisito.codigoCurso=Curso.codigoCurso"
+//            + " inner join cursoRequisito on cursoRequisito.codigoCurso=Curso.codigoCurso where Curso.codigoCurso = ?";
+
+  String sql = "select cursoRequisito.codigoCurso, cursoRequisito.idRequisito FROM cursoRequisito INNER JOIN\n" +
+"Curso ON Curso.codigoCurso = cursoRequisito.codigoCurso WHERE Curso.codigoCurso = ?";
     try{
       DefaultTableModel modelo = new DefaultTableModel();
       JTableElmRequisitos.setModel(modelo);
