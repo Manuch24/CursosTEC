@@ -15,6 +15,7 @@ import vista.FrmEscuela;
 import vista.FrmMenu;
 import vista.FrmPlanEstudio;
 import vista.FrmRequisitos;
+import vista.FrmModificaciones;
 
 
 /**
@@ -33,6 +34,7 @@ public class CtrlMenu implements ActionListener{
   private CtrlRequisitos ctrlRequisitos;
   private CtrlPlanEstudio ctrlPlanEstudio;
   private CtrlAnadirCurso ctrlAnadirCurso;
+  private CtrlModificaciones ctrlModificaciones;
   
   public CtrlMenu(){
     //Se inician los ctrl, vistas y consultas necesarias
@@ -45,6 +47,7 @@ public class CtrlMenu implements ActionListener{
     this.frmMenu.btnRgistrarPlanes.addActionListener(this);
     this.frmMenu.btnAnadirCursoPlan.addActionListener(this);
     this.frmMenu.btnConsultarPlanes.addActionListener(this);
+    this.frmMenu.BtnModificaciones.addActionListener(this);
   }
   
   public void iniciar(){
@@ -102,7 +105,17 @@ public class CtrlMenu implements ActionListener{
        CtrlConsultarPlan ctrlConsultarPlan = new CtrlConsultarPlan(escuelaDAO, planEstudioDAO, frmConsultarPlan);
       frmMenu.setVisible(false);
       ctrlConsultarPlan.iniciar();
-     } 
+     }
+     if(e.getSource()==frmMenu.BtnModificaciones){
+         Curso curso = new Curso();
+         CursoDAO cursoDAO = new CursoDAO();
+         PlanEstudio planEstudio = new PlanEstudio();
+         PlanEstudioDAO planEstudioDAO = new PlanEstudioDAO();
+         FrmModificaciones modificaciones = new FrmModificaciones();
+         this.ctrlModificaciones = new CtrlModificaciones(curso,planEstudio,cursoDAO,planEstudioDAO,modificaciones);
+         frmMenu.setVisible(false);
+         ctrlModificaciones.iniciar();
+     }
 
   }
   

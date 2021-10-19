@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JTable;
@@ -222,5 +224,73 @@ public class PlanEstudioDAO extends Conexion {
         System.err.println(e);
       }
     }
+  }
+  
+  public void consultarPlanEstudio(String numPlan, JTable jTablePlan){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    Connection con = getConexion();
+    
+    String consulta="select Curso.codigoCurso, Curso.nombreCurso, PlanEstudio.numPlan from Curso\n" + 
+            "inner join Bloque on Bloque.codigoCurso=Curso.codigoCurso\n" +
+            "inner join PlanEstudio on PlanEstudio.numPlan=Bloque.numPlan where PlanEstudio.numPlan = ?";
+    
+    try{
+        DefaultTableModel modelo = new DefaultTableModel();
+        jTablePlan.setModel(modelo);
+      
+        ps = con.prepareStatement(consulta);
+        ps.setString(1, numPlan);
+      
+        rs = ps.executeQuery();
+      
+        ResultSetMetaData rsMd = rs.getMetaData();
+        int cantColumnas = rsMd.getColumnCount();
+        
+        modelo.addColumn("Codigo Curso");
+        modelo.addColumn("Nombre Curso");
+        modelo.addColumn("Numero de plan");
+        
+        while(rs.next()){
+            Object[] filas = new Object[cantColumnas];
+          
+          for (int i=0;i < cantColumnas;i++){
+              filas[i] = rs.getObject(i+1);
+          }
+          modelo.addRow(filas);
+        }
+        rs.close();
+    }catch (SQLException e){
+        System.out.println(e);
+    } finally {
+        try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println(e);
+      }
+    }
+  }
+  
+  public void borrarCursoPlan(String numplan,JTable jTablePlan){
+      Connection con = getConexion();
+      
+      int row = jTablePlan.getSelectedRow();
+      
+      
+      String valor = (jTablePlan.getModel().getValueAt(row, 0).toString());
+      
+      String query = "delete from Bloque where codigoCurso ="+"'"+ valor +"'"+ "and numPlan ="+ "'"+numplan+"'";
+      
+      try{
+          PreparedStatement pst= con.prepareStatement(query);
+           pst.executeUpdate();
+           
+           DefaultTableModel model = (DefaultTableModel)jTablePlan.getModel();
+           model.setRowCount(0);
+           
+      }
+      catch (SQLException ex) {
+           Logger.getLogger(CursoDAO.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
 }
