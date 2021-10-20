@@ -293,4 +293,8 @@ public class PlanEstudioDAO extends Conexion {
            Logger.getLogger(CursoDAO.class.getName()).log(Level.SEVERE, null, ex);
       }
   }
+  
+  public void crearPDF(){
+      
+  }
 }
