@@ -30,7 +30,8 @@ public class FrmEnvioCorreo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         TxtEmailDestino = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BtnEnviarCorreo = new javax.swing.JButton();
+        BtnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,15 +39,16 @@ public class FrmEnvioCorreo extends javax.swing.JFrame {
 
         jLabel2.setText("Ingrese el correo destinatario: ");
 
-        jButton1.setText("Enviar Email");
+        BtnEnviarCorreo.setText("Enviar Email");
+
+        BtnVolver.setText("Volver");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(29, 29, 29)
@@ -55,7 +57,12 @@ public class FrmEnvioCorreo extends javax.swing.JFrame {
                             .addGap(59, 59, 59)
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(TxtEmailDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TxtEmailDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(BtnVolver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnEnviarCorreo)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,7 +75,9 @@ public class FrmEnvioCorreo extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(TxtEmailDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnEnviarCorreo)
+                    .addComponent(BtnVolver))
                 .addGap(31, 31, 31))
         );
 
@@ -111,8 +120,9 @@ public class FrmEnvioCorreo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TxtEmailDestino;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton BtnEnviarCorreo;
+    public javax.swing.JButton BtnVolver;
+    public javax.swing.JTextField TxtEmailDestino;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

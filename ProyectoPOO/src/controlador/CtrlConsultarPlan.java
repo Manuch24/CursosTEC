@@ -2,10 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logicaNegocios.EscuelaDAO;
 import logicaNegocios.PlanEstudioDAO;
 import vista.FrmConsultarPlan;
+import vista.FrmEnvioCorreo;
 
 /**
  *
@@ -16,6 +20,7 @@ public class CtrlConsultarPlan implements ActionListener{
   private PlanEstudioDAO planEstudioDAO;
   private EscuelaDAO escuelaDAO;
   private FrmConsultarPlan frm;
+  private FrmEnvioCorreo envioCorreo;
   
   
   public CtrlConsultarPlan(EscuelaDAO escuelaDAO, PlanEstudioDAO planEstudioDAO, FrmConsultarPlan frm){
@@ -47,7 +52,15 @@ public class CtrlConsultarPlan implements ActionListener{
   }
   
   public void llenadoTabla(){
-    planEstudioDAO.consultarPlan(frm.cbxPlan.getSelectedItem().toString(),frm.jTableBloque);
+    planEstudioDAO.consultarPlan(frm.cbxPlan.getSelectedItem().toString(),frm.jTableBloque,frm.LabelFecha);
+    planEstudioDAO.contadores(frm.cbxPlan.getSelectedItem().toString(),frm.LabelCursos,frm.LabelCreditos);
+  }
+  public void crearPDF() throws SQLException{
+    planEstudioDAO.crearPDF();
+  }
+  
+  public void abrirEnviarEmail(){
+      
   }
 
   @Override
@@ -65,6 +78,21 @@ public class CtrlConsultarPlan implements ActionListener{
     }
     if(e.getSource() == frm.btnCargar){
       llenadoTabla();
+    }
+    
+    if(e.getSource()== frm.btnPDF){
+        try {
+            FrmEnvioCorreo frmenviar = new FrmEnvioCorreo();
+            PlanEstudioDAO planEstudioDAO = new PlanEstudioDAO();
+            FrmConsultarPlan frm = new FrmConsultarPlan();
+            CtrlEnvioCorreo ctrlenvioEmail = new CtrlEnvioCorreo(frmenviar,planEstudioDAO,frm); 
+            ctrlenvioEmail.iniciar();                          
+            crearPDF();
+            //envioCorreo.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlConsultarPlan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
   }

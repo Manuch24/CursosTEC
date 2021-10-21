@@ -48,6 +48,7 @@ public class CtrlModificaciones implements ActionListener {
         this.frm.BtnBorrarCursoPlan.addActionListener(this);
         this.frm.BtnMostarCursos.addActionListener(this);
         this.frm.BtnEliminarCurso.addActionListener(this);
+        this.frm.BtnBuscar6.addActionListener(this);
         //this.frm.TxtConsulta1.addActionListener(this);
 
     }
@@ -61,6 +62,7 @@ public class CtrlModificaciones implements ActionListener {
 
     public void llenartabla() {
         cursoDAO.consultarRequisitos(frm.TxtConsulta1.getText(), frm.JTableElmRequisitos);
+        cursoDAO.consultarCorrequistos(frm.TxtConsulta1.getText(),frm.jTableCorrequi);
     }
 
     public void borrarRequisito() {
@@ -83,6 +85,10 @@ public class CtrlModificaciones implements ActionListener {
 
     public void eliminarCurso() {
         cursoDAO.eliminarCurso(frm.jTableCursos);
+    }
+    
+    public void llenartablaCursoPlan(){
+        cursoDAO.ConsultarCursosEnPlan(frm.TxtNombreCurso.getText(), frm.JTableConsulta6);
     }
 
     
@@ -113,6 +119,10 @@ public class CtrlModificaciones implements ActionListener {
 
         if (e.getSource() == frm.BtnMostarCursos) {
             llenartablaCursos();
+        }
+        
+        if (e.getSource() == frm.BtnBuscar6){
+            llenartablaCursoPlan();
         }
 
         if (e.getSource() == frm.BtnEliminarCurso) {

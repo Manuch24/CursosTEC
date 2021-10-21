@@ -259,6 +259,49 @@ public class CursoDAO {
         }
     }
 
+    public void consultarCorrequistos(String codCurso, JTable JTableElmRequisitos) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+
+        String sql = "select cursoCorrequisito.codigoCurso, cursoCorrequisito.idCorrequisito FROM cursoCorrequisito \n"
+                + "INNER JOIN Curso ON Curso.codigoCurso = cursoCorrequisito.codigoCurso WHERE Curso.codigoCurso = ?";
+        try {
+            DefaultTableModel modelo = new DefaultTableModel();
+            JTableElmRequisitos.setModel(modelo);
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, codCurso);
+
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantColumnas = rsMd.getColumnCount();
+
+            modelo.addColumn("Curso buscado");
+            modelo.addColumn("Codigo requisitos");
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantColumnas];
+
+                for (int i = 0; i < cantColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+
+                }
+                modelo.addRow(filas);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+    }
+
     public void BorrarRequisitos(JTable JTableElmRequisitos) {
         Connection con = getConexion();
 
@@ -276,6 +319,51 @@ public class CursoDAO {
 
         } catch (SQLException ex) {
             Logger.getLogger(CursoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void ConsultarCursosEnPlan(String NombreCurso, JTable jTableCursoPlan) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+
+        String sql = "select PlanEstudio.numPlan, Escuela.nombre as NombreEscuela from PlanEstudio\n"
+                + "inner join Bloque on Bloque.numPlan = PlanEstudio.numPlan\n"
+                + "inner join EscuelaPlan on EscuelaPlan.numPlan = PlanEstudio.numPlan\n"
+                + "inner join Escuela on Escuela.codigoEscuela = EscuelaPlan.codigoEscuela\n"
+                + "inner join Curso on Curso.codigoCurso = Bloque.codigoCurso where Curso.nombreCurso = ?";
+        try {
+            DefaultTableModel modelo = new DefaultTableModel();
+            jTableCursoPlan.setModel(modelo);
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, NombreCurso);
+
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantColumnas = rsMd.getColumnCount();
+
+            modelo.addColumn("Numero Plan");
+            modelo.addColumn("Escuela a la que pertenece");
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantColumnas];
+
+                for (int i = 0; i < cantColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(filas);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
         }
     }
 
@@ -336,36 +424,35 @@ public class CursoDAO {
         }
     }
 
-    public boolean validarCursoPlan(String CodCurso,JTable jTableCursos) throws SQLException {
+    public boolean validarCursoPlan(String CodCurso, JTable jTableCursos) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection conn = getConexion();
 
         String Consulta = "select Curso.codigoCurso, Curso.nombreCurso, PlanEstudio.numPlan from Curso\n"
                 + "inner join Bloque on Bloque.codigoCurso=Curso.codigoCurso\n"
-                + "inner join PlanEstudio on PlanEstudio.numPlan=Bloque.numPlan where Curso.codigoCurso = "+"'"+CodCurso+"'";
-        
+                + "inner join PlanEstudio on PlanEstudio.numPlan=Bloque.numPlan where Curso.codigoCurso = " + "'" + CodCurso + "'";
+
         ps = conn.prepareStatement(Consulta);
-        
+
         rs = ps.executeQuery();
-        
-        if(!rs.next()){
+
+        if (!rs.next()) {
             return true;
-        }else{
-        return false;
+        } else {
+            return false;
         }
     }
 
     public void eliminarCurso(JTable jTableCursos) {
 
         Connection con = getConexion();
-        
+
         int row = jTableCursos.getSelectedRow();
 
         String valor = (jTableCursos.getModel().getValueAt(row, 0).toString());
         String query = "delete from Curso where codigoCurso = " + "'" + valor + "'";
-        
-        
+
         try {
             PreparedStatement pst = con.prepareStatement(query);
             pst.executeUpdate();
