@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -28,12 +23,23 @@ import vista.FrmModificaciones;
  */
 public class CtrlModificaciones implements ActionListener {
 
+    //variables
     private Curso curso;
     private PlanEstudio planestudio;
     private FrmModificaciones frm;
     private CursoDAO cursoDAO;
     private PlanEstudioDAO planEstudioDAO;
 
+    /**
+     * Constructor de la clase controlador de las modificaciones y consultas
+     *
+     * @param curso Modelo del curso
+     * @param planestudio Modelo del plan de estudio
+     * @param cursoDAO EL DAO que maneja los cursos
+     * @param planEstudioDAO planEstudioDAO EL DAO que maneja los planes de
+     * estudio
+     * @param frm La vista que maneja este controlador
+     */
     public CtrlModificaciones(Curso curso, PlanEstudio planestudio, CursoDAO cursoDAO, PlanEstudioDAO planEstudioDAO, FrmModificaciones frm) {
         this.curso = curso;
         this.planestudio = planestudio;
@@ -53,6 +59,9 @@ public class CtrlModificaciones implements ActionListener {
 
     }
 
+    /**
+     * Método para inicializar la ventana modificaciones
+     */
     public void iniciar() {
         frm.setTitle("Modificaciones adicionales");
         frm.setVisible(true);
@@ -60,40 +69,66 @@ public class CtrlModificaciones implements ActionListener {
 
     }
 
+    /**
+     * Método el cual llena la tabla de la consulta de los requisistos y
+     * correcquisitos
+     */
     public void llenartabla() {
         cursoDAO.consultarRequisitos(frm.TxtConsulta1.getText(), frm.JTableElmRequisitos);
-        cursoDAO.consultarCorrequistos(frm.TxtConsulta1.getText(),frm.jTableCorrequi);
+        cursoDAO.consultarCorrequistos(frm.TxtConsulta1.getText(), frm.jTableCorrequi);
     }
 
+    /**
+     * Método el cual borra el requsito deseado
+     */
     public void borrarRequisito() {
         cursoDAO.BorrarRequisitos(frm.JTableElmRequisitos);
         llenartabla();
     }
 
+    /**
+     * Método el cual llena la tabla de la consulta de los planes de estudio
+     */
     public void llenartablaPlan() {
         planEstudioDAO.consultarPlanEstudio(frm.TxtPlan.getText(), frm.jTablePlan);
     }
 
+    /**
+     * Método el cual borra el Plan deseado
+     */
     public void borrarCursoPlan() {
         planEstudioDAO.borrarCursoPlan(frm.TxtPlan.getText(), frm.jTablePlan);
         llenartablaPlan();
     }
 
+    /**
+     * Método el cual llena la tabla de la consulta los cursos
+     */
     public void llenartablaCursos() {
         cursoDAO.consultarCursos(frm.jTableCursos);
     }
 
+    /**
+     * Método el cual borra el curso del plan
+     */
     public void eliminarCurso() {
         cursoDAO.eliminarCurso(frm.jTableCursos);
     }
-    
-    public void llenartablaCursoPlan(){
+
+    /**
+     * Método el cual llena la tabla delos planes que pertenece un curso
+     */
+    public void llenartablaCursoPlan() {
         cursoDAO.ConsultarCursosEnPlan(frm.TxtNombreCurso.getText(), frm.JTableConsulta6);
     }
 
-    
-
     @Override
+    /**
+     * Método donde se programan las acciones de cada uno de los botones o
+     * eventos
+     *
+     * @param ActionEvent Es la accion que se aplica al boton
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == frm.BtnBuscarRequi) {
             llenartabla();
@@ -120,8 +155,8 @@ public class CtrlModificaciones implements ActionListener {
         if (e.getSource() == frm.BtnMostarCursos) {
             llenartablaCursos();
         }
-        
-        if (e.getSource() == frm.BtnBuscar6){
+
+        if (e.getSource() == frm.BtnBuscar6) {
             llenartablaCursoPlan();
         }
 

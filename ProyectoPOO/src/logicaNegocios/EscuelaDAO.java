@@ -15,7 +15,7 @@ import javax.swing.JComboBox;
 public class EscuelaDAO extends Conexion {
   
   /***
-   * 
+   *  Metodo para registrar la escuela
    * @param pEscuela Escuela a ingresar en la base de datos 
    * @return true si se logra el registro, false si hubo un error a insertar
    */

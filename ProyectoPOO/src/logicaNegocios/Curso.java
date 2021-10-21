@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package logicaNegocios;
 
 import java.util.ArrayList;
@@ -21,7 +17,14 @@ public class Curso {
   private ArrayList<Curso> requisitos;
   private ArrayList<Curso> correquisitos;
 
-  public Curso(String nombre, String codigo, int creditos, int horasLectivas) {
+    /**
+     * Constructor de lal demodelo del curso
+     * @param nombre Es el nombre que va recibir el curso
+     * @param codigo Es el codigo que va recibir el codigo
+     * @param creditos Son la cantidad de creditos que se le asigna al curso
+     * @param horasLectivas Son la cantidad de horas que se le asigna al curso
+     */
+    public Curso(String nombre, String codigo, int creditos, int horasLectivas) {
     this.nombre = nombre;
     this.codigo = codigo;
     this.creditos = creditos;
@@ -30,7 +33,10 @@ public class Curso {
     this.correquisitos = new ArrayList<Curso>();
   }
 
-  public Curso() {}
+    /**
+     * COnstructor vacío
+     */
+    public Curso() {}
 
   public String getNombre() {
     return nombre;
@@ -85,11 +91,19 @@ public class Curso {
     return "Curso[ " + "nombre= " + nombre + "codigo=" + codigo + ", creditos=" + creditos + ", horasLectivas=" + horasLectivas + ", requisitos=" + requisitos + ", correquisitos=" + correquisitos + '}';
   }
   
-  public void agregarRequisito (Curso pCurso){
+    /**
+     * Método el cual registra los requistos de un curso en el arraylist del curso
+     * @param pCurso Es el curso que se anade como requisito
+     */
+    public void agregarRequisito (Curso pCurso){
     requisitos.add(pCurso);
   }
   
-  public void agregarCorrequisito (Curso pCurso){
+    /**
+     * Método el cual registra los correquistos de un curso en el arraylist del curso
+     * @param pCurso Es el curso que se anade como correquisito
+     */
+    public void agregarCorrequisito (Curso pCurso){
     correquisitos.add(pCurso);
   }
   

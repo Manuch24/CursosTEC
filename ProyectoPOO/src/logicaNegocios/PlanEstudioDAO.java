@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package logicaNegocios;
 
 import java.sql.Connection;
@@ -42,15 +38,20 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author XT
+ * @author Bryan Berrocal
+ * @author Manuel Chaves
  */
 public class PlanEstudioDAO extends Conexion {
-
     static String nombreDocumetoTodo;
-
     private FrmConsultarPlan frmConsultarPlan;
 
+    /**
+     * Metiodo para registrar plan de estudio
+     * @param pPlanEstudio Es el modelo del plan de estudio 
+     * @param cbxEscuela Combobox de la escuela
+     * @param date Fecha de vigencia del plan
+     * @return true si se registra correctamente y false en caso qe no se haya registrado
+     */
     public boolean registrar(PlanEstudio pPlanEstudio, JComboBox cbxEscuela, String date) {
         PreparedStatement ps = null;
         Connection con = getConexion();
@@ -79,6 +80,12 @@ public class PlanEstudioDAO extends Conexion {
         }
     }
 
+    /**
+     * Método el realiza consultas sobre los planes de estudio y llena los
+     * combobox
+     * @param cbxPlanes El combobox de los planes de estudio
+     * @param cbxEscuela El comobox de las escuelas
+     */
     public void listarPlanes(JComboBox cbxPlanes, JComboBox cbxEscuela) {
         cbxPlanes.removeAllItems();
         PreparedStatement ps = null;
@@ -111,6 +118,11 @@ public class PlanEstudioDAO extends Conexion {
         }
     }
 
+    /**
+     * Método el cual verfica si existe un plan registrado
+     * @param numPlan El número de plan el cual quiere ser consultado
+     * @return el numero del plan si se esta registrado, y en caos que no lo este lo indica
+     */
     public String numeroPlan(String numPlan) {
 
         PreparedStatement ps = null;
@@ -141,6 +153,12 @@ public class PlanEstudioDAO extends Conexion {
         }
     }
 
+    /**
+     * Método que verifca que si existe un curso en el plan
+     * @param codigoCurso Es el cpdigo del cruso que se va a verficar
+     * @param numPlan Es el codigo del plan donde se va a buscar
+     * @return Si esta retorna el curso, si no lo esta, dira que no existe
+     */
     public String existeCursoPlan(String codigoCurso, String numPlan) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -172,6 +190,13 @@ public class PlanEstudioDAO extends Conexion {
 
     }
 
+    /**
+     * Metodo en el cual se va a registrar un curso a un plan y blque
+     * @param numBloque El numero del bloque al cual va  a pertencer
+     * @param numPlan Es el plan al cual va a pertencer el curso
+     * @param codigoCurso Es el codigo del curso que se va agragar
+     * @return true si se registra correctamente
+     */
     public boolean ingresarCurso(String numBloque, String numPlan, String codigoCurso) {
         PreparedStatement ps = null;
         Connection con = getConexion();
@@ -198,6 +223,12 @@ public class PlanEstudioDAO extends Conexion {
         }
     }
 
+    /**
+     * Métood en el cual se va a consultar el plan de estudiops
+     * @param numPlan El numero dekl plan el cual se va a consultar
+     * @param JTableBloque la tabla donde se muestra la consulta
+     * @param LabelFecha Es la fecha de vigencia desde la consulta
+     */
     public void consultarPlan(String numPlan, JTable JTableBloque,JLabel LabelFecha) {
         nombreDocumetoTodo = numPlan;
 
@@ -252,6 +283,12 @@ public class PlanEstudioDAO extends Conexion {
 
     }
 
+    /**
+     * Método en el cual se consulta cantidad de curso y suma de creditos
+     * @param numPlan el numero del plan a buscar
+     * @param LabelCursos DOnde se muestra la cantidad de cursos
+     * @param LabelCreditos donde se muestra la suma de creditos
+     */
     public void contadores(String numPlan, JLabel LabelCursos, JLabel LabelCreditos) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -288,6 +325,11 @@ public class PlanEstudioDAO extends Conexion {
         }
     }
 
+    /**
+     * Método el a extraer informacion para llenar pdf
+     * @param numPlan numero del plan que se consulta
+     * @param jTablePlan la plaba donde se aloja la informacion
+     */
     public void consultarPlanEstudio(String numPlan, JTable jTablePlan) {
 
         PreparedStatement ps = null;
@@ -334,6 +376,11 @@ public class PlanEstudioDAO extends Conexion {
         }
     }
 
+    /**
+     * Método donde se va a borrar el curso de un plan
+     * @param numplan  el numero del plan para buscarlo
+     * @param jTablePlan la tabla en el cual esta alojada la informacion
+     */
     public void borrarCursoPlan(String numplan, JTable jTablePlan) {
         Connection con = getConexion();
 
@@ -355,6 +402,11 @@ public class PlanEstudioDAO extends Conexion {
         }
     }
 
+    /**
+     * Metodo donde se va a crear el pdf
+     * @return La ruta donde se guarda el pdf
+     * @throws SQLException error con sql
+     */
     public String crearPDF() throws SQLException {
         Connection con = getConexion();
 
@@ -393,6 +445,12 @@ public class PlanEstudioDAO extends Conexion {
         return ruta + ".pdf";
     }
 
+    /**
+     * Metodo para construir el email.
+     * @param destinatario el destinatario al cual se quiere enviar el ccrreo
+     * @param rutaArchivo La ruta donde esta laojado el pdf con el objectivo de adjuntarlo
+     * @return true si se formo el emial correctamente
+     */
     public boolean FormarEmail(String destinatario, String rutaArchivo) {
 
         String usuario = "proyectopython18@gmail.com";
@@ -449,6 +507,10 @@ public class PlanEstudioDAO extends Conexion {
         return true;
     }
 
+    /**
+     * Metodo el cual va a envier el correo formalmente
+     * @param destinatario El usurio al que le va llegar al correo
+     */
     public void EnviarEmail(String destinatario) {
         try {
             String ruta = crearPDF();

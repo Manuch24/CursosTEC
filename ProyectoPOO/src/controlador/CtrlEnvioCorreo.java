@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -14,47 +9,62 @@ import vista.FrmEnvioCorreo;
 import vista.FrmMenu;
 
 /**
- *
- * @author manue
+ * @author Bryan Berrocal
+ * @author Manuel Chaves
  */
-public class CtrlEnvioCorreo implements ActionListener{
+public class CtrlEnvioCorreo implements ActionListener {
 
-
+    //variables
     private FrmEnvioCorreo frmenviar;
-    
-    
-
     private PlanEstudioDAO planEstudioDAO;
-    
     private FrmConsultarPlan frm;
 
-
-    public CtrlEnvioCorreo(FrmEnvioCorreo frmenviar, PlanEstudioDAO planEstudioDAO,FrmConsultarPlan frm) {
+    /**
+     * Constructor de la clase controlador de la ventana que envia correos
+     *
+     * @param frmenviar El form que maneja este controlador
+     * @param planEstudioDAO EL DAO que maneja los planes de estudio
+     * @param frm El form que maneja este controlador
+     */
+    public CtrlEnvioCorreo(FrmEnvioCorreo frmenviar, PlanEstudioDAO planEstudioDAO, FrmConsultarPlan frm) {
         this.frmenviar = frmenviar;
         this.planEstudioDAO = planEstudioDAO;
         this.frm = frm;
         //this.ctrlconsultarplan = new CtrlConsultarPlan(escuelaDAO,planEstudioDAO,frm);
-        
+
         this.frmenviar.BtnEnviarCorreo.addActionListener(this);
         this.frmenviar.BtnVolver.addActionListener(this);
     }
 
+    /**
+     * Método para inicializar la ventana
+     */
     public void iniciar() {
         frmenviar.setTitle("Enviar correo");
         frmenviar.setVisible(true);
         frmenviar.setLocationRelativeTo(null);
     }
-    
-    public void enviarCorreo(){
+
+    /**
+     * Método que envia los datos necesarios para enviar el correo
+     */
+    public void enviarCorreo() {
         planEstudioDAO.EnviarEmail(frmenviar.TxtEmailDestino.getText());
     }
+
     @Override
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == frmenviar.BtnEnviarCorreo){
+     /**
+     * Método donde se programan las acciones de cada uno de los botones o
+     * eventos
+     * 
+     *  @param ActionEvent Es la accion que se aplica al boton
+     */
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == frmenviar.BtnEnviarCorreo) {
             enviarCorreo();
         }
-        
-        if(e.getSource() == frmenviar.BtnVolver){
+
+        if (e.getSource() == frmenviar.BtnVolver) {
             frmenviar.setVisible(false);
             frmenviar.dispose();
             //frmenviar.set

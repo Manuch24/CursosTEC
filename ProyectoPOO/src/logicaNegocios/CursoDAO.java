@@ -23,9 +23,14 @@ import logicaNegocios.Curso;
 public class CursoDAO {
 
     private Curso curso;
-
     private ArrayList<Curso> cursos;
 
+    /**
+     * Metiodo para registrar plan de estudio
+     *
+     * @param pCurso Es el curso que se quiere registrar
+     * @return true si resgistro correctamente, false en caso contrario
+     */
     public boolean registar(Curso pCurso) {
         PreparedStatement ps = null;
         Connection con = getConexion();
@@ -54,10 +59,11 @@ public class CursoDAO {
     }
 
     /**
-     * *
+     * Método el realiza consultas sobre las escuelas y llena de curso para
+     * llenar combobox
      *
-     * @param cbxEscuela
-     * @param cbxCurso
+     * @param cbxEscuela el combobox de la escula a llenar
+     * @param cbxCurso el combobc del curso a llenar
      */
     public void listarCursoEscuela(JComboBox cbxEscuela, JComboBox cbxCurso) {
         cbxCurso.removeAllItems();
@@ -95,9 +101,9 @@ public class CursoDAO {
     }
 
     /**
-     * *
+     * Método el realiza consultas sobre los curso y llena los combobox
      *
-     * @param cbx
+     * @param cbx combobox al cual se llena con los cursos
      */
     public void listarCursos(JComboBox cbx) {
         cbx.removeAllItems();
@@ -129,12 +135,12 @@ public class CursoDAO {
     }
 
     /**
-     * *
+     * Metodo el cual registra requistos
      *
-     * @param cbxCurso
-     * @param cbxRequisito
-     * @return
-     * @throws SQLException
+     * @param cbxCurso el comboxbiox del curso al que se le agreag el requisito
+     * @param cbxRequisito el comobbox donde sale el requisito a registrar
+     * @return true si se ejecuto correctamente
+     * @throws SQLException error en sql
      */
     public boolean registrarRequisito(JComboBox cbxCurso, JComboBox cbxRequisito) throws SQLException {
         PreparedStatement ps = null;
@@ -160,6 +166,15 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Metodo el cual registra requistos
+     *
+     * @param cbxCurso el comboxbiox del curso al que se le agreag el
+     * correquisito
+     * @param cbxCorrequisito el combobox donde sale el correquisito a registrar
+     * @return true si se ejecuto correctamente, false en caso contrario
+     * @throws SQLException error en sql
+     */
     public boolean registrarCorrequisito(JComboBox cbxCurso, JComboBox cbxCorrequisito) throws SQLException {
         PreparedStatement ps = null;
         Connection con = getConexion();
@@ -184,6 +199,11 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Metodo que verifica el curso para llenar los requsitos ,
+     * @param cbxRequisito Combobox del requisto a buscar
+     * @param cbxCurso combobox el curso a buscar
+     */
     public void listarCursosRequisitos(JComboBox cbxRequisito, JComboBox cbxCurso) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -213,6 +233,11 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Metodo el cuel connsulta los requisitos de cierto curso
+     * @param codCurso el codigo del curso que se quiere buscar
+     * @param JTableElmRequisitos la tabla donde se alojan los resultados
+     */
     public void consultarRequisitos(String codCurso, JTable JTableElmRequisitos) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -259,6 +284,11 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Metodo en el cual consultan los correquisitos
+     * @param codCurso El codgigo del curso el cual buscar sus correquisito
+     * @param JTableElmRequisitos Tabla los correquistos y donde se alojan
+     */
     public void consultarCorrequistos(String codCurso, JTable JTableElmRequisitos) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -302,6 +332,10 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Metodo para borrar el requisisto de un curso
+     * @param JTableElmRequisitos la tabla donde estan alojados las información
+     */
     public void BorrarRequisitos(JTable JTableElmRequisitos) {
         Connection con = getConexion();
 
@@ -322,6 +356,11 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Método el cual se buscal los cursos en el plan
+     * @param NombreCurso Nombre del curso que quiere buscar
+     * @param jTableCursoPlan La tabla donde esta la informacion
+     */
     public void ConsultarCursosEnPlan(String NombreCurso, JTable jTableCursoPlan) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -367,6 +406,10 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Metodo que consulta los cursos
+     * @param jTableCursos La tabla donde se aloja la informacion de los cursos
+     */
     public void consultarCursos(JTable jTableCursos) {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -424,6 +467,13 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * metodo donde se valida el curso con el plan
+     * @param CodCurso el codigo del curso a buscar
+     * @param jTableCursos la tabla donde se aloja la informacion
+     * @return true, si el curso estan registrado en algun plan
+     * @throws SQLException error sql
+     */ 
     public boolean validarCursoPlan(String CodCurso, JTable jTableCursos) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -444,6 +494,10 @@ public class CursoDAO {
         }
     }
 
+    /**
+     * Metodo para eliminar cursos 
+     * @param jTableCursos la tabla donde esta los datos.
+     */
     public void eliminarCurso(JTable jTableCursos) {
 
         Connection con = getConexion();

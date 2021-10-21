@@ -25,6 +25,7 @@ import vista.FrmModificaciones;
  * 
  */
 public class CtrlMenu implements ActionListener{
+  //Vsriables
   private FrmMenu frmMenu;
   private CtrlCurso ctrlCurso;
   private CtrlEscuela ctrlEscuela;
@@ -36,7 +37,10 @@ public class CtrlMenu implements ActionListener{
   private CtrlAnadirCurso ctrlAnadirCurso;
   private CtrlModificaciones ctrlModificaciones;
   
-  public CtrlMenu(){
+    /**
+     * Conntructor vacio del menú
+     */
+    public CtrlMenu(){
     //Se inician los ctrl, vistas y consultas necesarias
     this.frmMenu = new FrmMenu();
     this.ctrlEscuela = new CtrlEscuela();
@@ -50,13 +54,22 @@ public class CtrlMenu implements ActionListener{
     this.frmMenu.BtnModificaciones.addActionListener(this);
   }
   
-  public void iniciar(){
+    /**
+     *  Método para inicializar la ventana de menu
+     */
+    public void iniciar(){
     frmMenu.setTitle("Menú de Planes y cursos");
     frmMenu.setVisible(true);
     frmMenu.setLocationRelativeTo(null);
   }
-  
+
   @Override
+       /**
+     * Método donde se programan las acciones de cada uno de los botones o
+     * eventos
+     * 
+     *  @param ActionEvent Es la accion que se aplica al boton
+     */
   public void actionPerformed(ActionEvent e) {
     //Abre la vista curso por medio del ctrlCurso, este tiene médoto iniciar
     if (e.getSource() == frmMenu.btnRegistrarCurso){

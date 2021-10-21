@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logicaNegocios;
 
 import java.sql.Connection;
@@ -16,7 +11,11 @@ import java.sql.SQLException;
  */
 public class Conexion {
   
-  public static Connection getConexion(){
+    /**
+     * Método en el cual se gurada la información para la conexión  con la base de datos 
+     * @return con si la conexion se realzón de manera exitosa
+     */
+    public static Connection getConexion(){
     String conexionUrl = "jdbc:sqlserver://localhost:1433;databaseName=Progra1POO";
        try{  
            Connection con =  DriverManager.getConnection(conexionUrl,"sa","12345");

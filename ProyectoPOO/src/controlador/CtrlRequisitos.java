@@ -26,7 +26,13 @@ public class CtrlRequisitos implements ActionListener{
   private CursoDAO cursoDAO;
   private PlanEstudioDAO planEstudioDAO;
   
-  public CtrlRequisitos(Curso curso, CursoDAO cursoDAO, FrmRequisitos frm){
+    /**
+     * Constructor de la clase controlador de requisitos
+     * @param curso Modelo del curso
+     * @param cursoDAO  EL DAO que maneja los cursos
+     * @param frm La vista que maneja este controlador
+     */
+    public CtrlRequisitos(Curso curso, CursoDAO cursoDAO, FrmRequisitos frm){
     this.escuelaDAO = new EscuelaDAO();
     this.planEstudioDAO = new PlanEstudioDAO();
     this.mod = curso;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logicaNegocios;
 
 import java.util.ArrayList;
@@ -13,46 +8,48 @@ import java.util.ArrayList;
  * @author Manuel Chaves
  */
 public class Bloque {
-  private int numBloque;
-  private ArrayList<Curso> cursos;
-  // codigo de cual plan pertence???
+    //variables
 
-  public Bloque(int numBloque) {
-    this.numBloque = numBloque;
-    this.cursos = new ArrayList<Curso>();
-  }
+    private int numBloque;
+    private ArrayList<Curso> cursos;
 
-  public int getNumBloque() {
-    return numBloque;
-  }
+    /**
+     * Constructor del modelo del bloque
+     * @param numBloque Es el número del bloque
+     */
+    public Bloque(int numBloque) {
+        this.numBloque = numBloque;
+        this.cursos = new ArrayList<Curso>();
+    }
 
-  public void setNumBloque(int numBloque) {
-    this.numBloque = numBloque;
-  }
+    public int getNumBloque() {
+        return numBloque;
+    }
 
-  public ArrayList<Curso> getCursos() {
-    return cursos;
-  }
+    public void setNumBloque(int numBloque) {
+        this.numBloque = numBloque;
+    }
 
-  public void setCursos(ArrayList<Curso> cursos) {
-    this.cursos = cursos;
-  }
+    public ArrayList<Curso> getCursos() {
+        return cursos;
+    }
 
-  @Override
-  public String toString() {
-    return "Bloque: [" + "numBloque=" + numBloque + "cursos= " + cursos + "]";
-  }
-  
-  
-  
-  public void agregarCursoBloque(Curso curso){
-    cursos.add(curso);
-    System.err.println("curso añadido al bloque: "+getNumBloque());
-  }
-  
-  
-  
-  
-  
-  
+    public void setCursos(ArrayList<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+    @Override
+    public String toString() {
+        return "Bloque: [" + "numBloque=" + numBloque + "cursos= " + cursos + "]";
+    }
+
+    /**
+     * Método que añade el curso al arraylist
+     * @param curso es el objeto curso que se va agregar al arraylist
+     */
+    public void agregarCursoBloque(Curso curso) {
+        cursos.add(curso);
+        System.err.println("curso añadido al bloque: " + getNumBloque());
+    }
+
 }
