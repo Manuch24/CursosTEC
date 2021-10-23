@@ -67,25 +67,30 @@ public class CtrlPlanEstudio implements ActionListener {
      *  @param ActionEvent Es la accion que se aplica al boton
      */
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == frm.btnRegistrar) {
-            if (frm.txtCodigoPlan.getText() == "" || frm.jDateChooser1.getDate() == null) {
-                JOptionPane.showMessageDialog(null, "Llene  todos los campos");
-            } else {
-                if (planEstudioDAO.numeroPlan(frm.txtCodigoPlan.getText()).equals(frm.txtCodigoPlan.getText())) {
-                    JOptionPane.showMessageDialog(null, "Error: El número de plan escogido ya lo utiliza otra escuela");
-                } else {
-                    planEstudio.setNumPlan(Integer.parseInt(frm.txtCodigoPlan.getText()));
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String format = simpleDateFormat.format(frm.jDateChooser1.getDate());
+      if (e.getSource() == frm.btnRegistrar) {
+        if (frm.txtCodigoPlan.getText().isEmpty() != true) {
+          if (planEstudioDAO.numeroPlan(frm.txtCodigoPlan.getText()).equals(frm.txtCodigoPlan.getText())) {
+            JOptionPane.showMessageDialog(null, "Error: El número de plan escogido ya lo utiliza otra escuela");
+          } else {
+            try {
+              planEstudio.setNumPlan(Integer.parseInt(frm.txtCodigoPlan.getText()));
+              SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+              String format = simpleDateFormat.format(frm.jDateChooser1.getDate());
 
-                    if (planEstudioDAO.registrar(planEstudio, frm.cbxEscuela, format)) {
-                        JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Error este número de plan ya lo usa otra escuela  ");
-                    }
-                }
+              if (planEstudioDAO.registrar(planEstudio, frm.cbxEscuela, format)) {
+                JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
+              } else {
+                JOptionPane.showMessageDialog(null, "Error este número de plan ya lo usa otra escuela  ");
+              }
+            } catch (NumberFormatException n) {
+              JOptionPane.showMessageDialog(null, "Ingrese en número de plan solo números enteros");
             }
+          }
+        } else {
+          JOptionPane.showMessageDialog(null, "Llene tods los campos");
         }
+      }
+
         if (e.getSource() == frm.btnVolver) {
             frm.setVisible(false);
             CtrlMenu.iniciar();

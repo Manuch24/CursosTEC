@@ -70,6 +70,7 @@ public class PlanEstudioDAO extends Conexion {
             return true;
         } catch (SQLException e) {
             System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros enteros");
             return false;
         } finally {
             try {
@@ -109,6 +110,7 @@ public class PlanEstudioDAO extends Conexion {
             rs.close();
         } catch (SQLException e) {
             System.err.println(e);
+ 
         } finally {
             try {
                 con.close();

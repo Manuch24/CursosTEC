@@ -56,6 +56,8 @@ public class CtrlEscuela implements ActionListener {
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }
+    
+    
 
     @Override
     /**
@@ -65,18 +67,23 @@ public class CtrlEscuela implements ActionListener {
      * @param ActionEvent Es la accion que se aplica al boton
      */
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == frm.btnRegistrar) {
-            escuela.setCodigo(frm.txtCodigo.getText());
-            escuela.setNombre(frm.txtNombre.getText());
+      if (e.getSource() == frm.btnRegistrar) {
+        if (frm.txtCodigo.getText().isEmpty() != true && frm.txtNombre.getText().isEmpty() != true) {
+          escuela.setCodigo(frm.txtCodigo.getText());
+          escuela.setNombre(frm.txtNombre.getText());
 
-            if (escuelaDAO.registar(escuela)) {
-                JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
-                limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "ERROR al guardar  ");
-                limpiar();
-            }
+          if (escuelaDAO.registar(escuela)) {
+            JOptionPane.showMessageDialog(null, "Registro de escuela guardado");
+            limpiar();
+          } else {
+            JOptionPane.showMessageDialog(null, "ERROR al guardar  ");
+            limpiar();
+          }
+        } else {
+          JOptionPane.showMessageDialog(null, "Complete todos los campos ");
+
         }
+      }
 
         if (e.getSource() == frm.btnBuscar) {
             escuela.setCodigo(frm.txtCodigo.getText());

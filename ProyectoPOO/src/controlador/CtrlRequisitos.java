@@ -108,28 +108,37 @@ public class CtrlRequisitos implements ActionListener{
     }
     
     if (e.getSource() == frm.btnRegistrarRequisito){
-      try {
-        if (cursoDAO.registrarRequisito(frm.cbxCurso, frm.cbxRequisito)) {
-          JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
-        } else {
-          JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo requisito");
-        }
-      } catch (SQLException ex) {
-        Logger.getLogger(CtrlRequisitos.class.getName()).log(Level.SEVERE, null, ex);
-      }
-    }
+     if ((frm.cbxCurso.getSelectedItem().toString().equals(frm.cbxRequisito.getSelectedItem().toString()) != true)) {
+       try {
+         if (cursoDAO.registrarRequisito(frm.cbxCurso, frm.cbxRequisito)) {
+           JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
+         } else {
+           JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo requisito");
+         }
+       } catch (SQLException ex) {
+         Logger.getLogger(CtrlRequisitos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+     } else {
+       JOptionPane.showMessageDialog(null, "No se puede elegir el mismo curso como requisito");
+     }
+   }
+
 
     if (e.getSource() == frm.btnRegistrarCorrequisito) {
-      try {
-        if (cursoDAO.registrarCorrequisito(frm.cbxCurso, frm.cbxCorrequisito)) {
-          JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
-        } else {
-          JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo Corrrequisito  ");
+      if ((frm.cbxCurso.getSelectedItem().toString().equals(frm.cbxCorrequisito.getSelectedItem().toString()) != true)) {
+        try {
+          if (cursoDAO.registrarCorrequisito(frm.cbxCurso, frm.cbxCorrequisito)) {
+            JOptionPane.showMessageDialog(null, "Requisito Guardado  ");
+          } else {
+            JOptionPane.showMessageDialog(null, "Error al guardar, no se puede guardar el mismo Corrrequisito  ");
+          }
+        } catch (SQLException ex) {
+          Logger.getLogger(CtrlRequisitos.class.getName()).log(Level.SEVERE, null, ex);
         }
-      } catch (SQLException ex) {
-        Logger.getLogger(CtrlRequisitos.class.getName()).log(Level.SEVERE, null, ex);
+      } else {
+        JOptionPane.showMessageDialog(null, "No se puede elegir el mismo curso como correquisito");
       }
     }
-  }  
-  
+  }
+
 }

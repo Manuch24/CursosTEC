@@ -126,8 +126,8 @@ public class CtrlAnadirCurso implements ActionListener {
         }
         if (e.getSource() == frm.btnRegistrar) {
             if (existeCurso(frm.cbxCurso, frm.cbxPlan) == true) {
-                JOptionPane.showMessageDialog(null, "El curso ya se encuentra en el plan " + frm.cbxPlan.getSelectedItem().toString()
-                        + " en el bloque " + frm.cbxBloque.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null, "El curso ya se encuentra en el plan " + frm.cbxPlan.getSelectedItem().toString());
+              
             } else {
                 planEstudioDAO.ingresarCurso(frm.cbxBloque.getSelectedItem().toString(), frm.cbxPlan.getSelectedItem().toString(),
                         frm.cbxCurso.getSelectedItem().toString());

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import logicaNegocios.EscuelaDAO;
 import logicaNegocios.PlanEstudioDAO;
 import vista.FrmConsultarPlan;
@@ -71,9 +72,14 @@ public class CtrlConsultarPlan implements ActionListener {
      * Método el cual llena la tabla de la consulta de los planes de estudio
      */
     public void llenadoTabla() {
+      try{
         planEstudioDAO.consultarPlan(frm.cbxPlan.getSelectedItem().toString(), frm.jTableBloque, frm.LabelFecha);
         planEstudioDAO.contadores(frm.cbxPlan.getSelectedItem().toString(), frm.LabelCursos, frm.LabelCreditos);
-    }
+      }catch(NullPointerException e){
+        JOptionPane.showMessageDialog(null, "No tiene planes registrados esta escuela");
+      }
+      }
+    
 
     /**
      * Método el cual llama el método de crear pdf

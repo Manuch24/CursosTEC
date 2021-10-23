@@ -87,8 +87,16 @@ public class CtrlCurso implements ActionListener {
         frm.cbxCreditos.getSelectedIndex();
         frm.cbxEscuela.getSelectedIndex();
         frm.cbxHorasLectivas.getSelectedIndex();
-
     }
+    
+   public boolean validarCamposVacios(){
+      if (frm.txtCodigo.getText().isEmpty()==true || frm.txtNombre.getText().isEmpty()==true) {
+        return true;
+      }
+      else{
+        return false;
+      }
+   }
 
     @Override
     /**
@@ -106,19 +114,23 @@ public class CtrlCurso implements ActionListener {
         if (e.getSource() == frm.cbxEscuela) {
             setLetrasCodigo();
         }
-        if (e.getSource() == frm.btnRegistar) {
-            setLetrasCodigo();
-            curso.setCodigo(frm.lblCodigo.getText() + frm.txtCodigo.getText());
-            curso.setNombre(frm.txtNombre.getText());
-            curso.setHorasLectivas(Integer.parseInt(frm.cbxCreditos.getSelectedItem().toString()));
-            curso.setCreditos(Integer.parseInt(frm.cbxHorasLectivas.getSelectedItem().toString()));
+      if (e.getSource() == frm.btnRegistar) {
+        if (validarCamposVacios()==true) {
+          JOptionPane.showMessageDialog(null, "Llene todos los campos");
+        } else {
+          setLetrasCodigo();
+          curso.setCodigo(frm.lblCodigo.getText() + frm.txtCodigo.getText());
+          curso.setNombre(frm.txtNombre.getText());
+          curso.setHorasLectivas(Integer.parseInt(frm.cbxCreditos.getSelectedItem().toString()));
+          curso.setCreditos(Integer.parseInt(frm.cbxHorasLectivas.getSelectedItem().toString()));
 
-            if (cursoDAO.registar(curso)) {
-                JOptionPane.showMessageDialog(null, "Registro del  curso " + curso.getNombre() + " guardado");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al guardar curso  ");
-            }
+          if (cursoDAO.registar(curso)) {
+            JOptionPane.showMessageDialog(null, "Registro del  curso " + curso.getNombre() + " guardado");
+          } else {
+            JOptionPane.showMessageDialog(null, "Error al guardar curso  ");
+          }
         }
+      }
 
         //Volver al menu
         if (e.getSource() == frm.btnVolver) {
